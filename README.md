@@ -72,12 +72,16 @@ Legal guardrails are code, not comments (`scripts/lib/guard.mjs`), and follow th
 
 ### Scheduling
 
-The GitHub Actions workflow `.github/workflows/daily.yml` runs the newsdesk daily at 11:17 UTC. Configure the repository once:
+The GitHub Actions workflow `.github/workflows/daily.yml` runs the newsdesk daily at 11:17 UTC. It drafts with **Claude Code on a Pro/Max subscription** (no metered API charge), then enforces the house-style linter and guardrail tests as hard gates before anything publishes.
 
-- Secret `ANTHROPIC_API_KEY` — the drafting key.
-- Variable `AUTO_PUBLISH` — set to `true` to commit each day's article straight to `content/articles` (Vercel redeploys on push), or leave it unset/`false` to open a pull request into `content/drafts` for review.
+Configure the repository once:
+
+- Secret `CLAUDE_CODE_OAUTH_TOKEN` — generate locally with `claude setup-token` (requires a Claude Pro or Max plan) and paste the token here. Headless Claude Code usage currently draws on your subscription's usage limits rather than metered API credits.
+- Variable `AUTO_PUBLISH` — set to `true` to commit each day's article straight to `content/articles` (Vercel redeploys on push), or leave it unset/`false` to open a pull request for review.
 
 Flip between publish and review by changing that one variable; the code path is identical.
+
+The generation step runs `claude -p "$(cat scripts/daily-prompt.md)"`; edit `scripts/daily-prompt.md` to change what the desk covers. Legacy note: `scripts/daily.mjs` + `scripts/lib/anthropic.mjs` remain for a metered-API path if you ever set `ANTHROPIC_API_KEY` and call them directly, but the scheduled workflow uses the subscription token and never touches the API.
 
 ## For machines
 
