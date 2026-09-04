@@ -1,0 +1,25 @@
+# Research notes: The Agent Economy Needs a Bank
+
+## Mastercard Agent Pay for Machines
+Fetched https://www.mastercard.com/us/en/news-and-trends/press/2026/june/mastercard-launches-agent-pay-for-machines.html. Announced June 10, 2026. Four capabilities: credentialing agents, setting authorization rules, enabling cross-provider transactions, guaranteeing settlement across payment rails (cards, accounts, stablecoins). Quote, Jorn Lambert (CPO): "Machine payments can make it possible for services to be bought and sold among agents at fundamentally different scales than payments today — very high volumes, very small values, very fast and at extremely low latency." Quote, Nathan McCauley (Anchorage Digital CEO) on the collaboration. Over 30 partners named: Adyen, Ant International, BVNK, Checkout.com, Cloudflare, Coinbase, Getnet by Santander, Global Payments, Lovable, OKX, Stripe, Tempo, Aave Labs, Alchemy, Polygon, Ripple, Solana Foundation, others. Corroborated by Fortune, same date — https://fortune.com/2026/06/10/mastercard-ai-payments-protocol-launch-agentic-finance/
+
+## Tom Lee / BitMine — IMPORTANT VERIFICATION NOTE
+Could NOT verify the specific brief-cited "TheStreet, Sept. 2, 2026, Hillary Remy, BitMine ~5.85 million ETH" claim. Attempted fetch of a plausible TheStreet URL (https://www.thestreet.com/crypto/markets/wall-street-veteran-pushes-back-on-treasury-doom-narrative) and it resolved to a DIFFERENT piece: author Anand Sinha, dated Feb. 4, 2026, reporting BitMine held 4,285,125 ETH and 193 BTC as of Feb. 1, 2026 — no agent-economy content, no 5.85M figure. Search for the Hillary Remy byline specifically did not surface a confirmable match. Per research discipline, dropped the unverified figure/byline and used only confirmed data: BitMine's Feb. 2026 holding (4,285,125 ETH) and its ongoing 2026 accumulation reported by CoinDesk — May 4, 2026, "+$238 million in ether" (https://www.coindesk.com/business/2026/05/04/tom-lee-says-crypto-spring-started-as-largest-ethereum-treasury-buys-usd238-million-in-ether); July 6, 2026, "+42k ETH" (https://www.coindesk.com/business/2026/07/06/bitmine-added-another-usd74-million-in-ether-as-tom-lee-bets-on-clarity-act-boost); Aug. 10, 2026, "+$14 million in ETH" (https://www.coindesk.com/business/2026/08/10/bitmine-s-eth-buying-slows-as-tom-lee-s-firm-shifts-capital-to-share-buybacks); Aug. 24, 2026, "+32,447 ether" (https://www.theblock.co/news/business/2026-08-24-upside-move-eth-was-overdue-tom-lee-says-bitmine-buys-more-ether-412589).
+
+## Stripe/Tempo
+CoinDesk, "Stripe-led payments blockchain Tempo goes live with AI agent protocol," March 18, 2026 — https://www.coindesk.com/tech/2026/03/18/stripe-led-payments-blockchain-tempo-goes-live-with-protocol-for-ai-agents. Fortune, "Stripe and Paradigm-backed blockchain Tempo launches advisory unit to promote stablecoin adoption," April 21, 2026 — https://fortune.com/2026/04/21/stripe-and-paradigm-tempo-advisory-stablecoin-adoption/
+
+## Coinbase x402
+CryptoBriefing, "Base says agent payments reached 3.1 million x402 transactions in 30 days," 2026 (no exact date visible) — https://cryptobriefing.com/agent-payments-growth-x402/. Earlier skepticism: CoinDesk, "Coinbase-backed AI payments protocol wants to fix micropayment but demand is just not there yet," March 11, 2026 — https://www.coindesk.com/markets/2026/03/11/coinbase-backed-ai-payments-protocol-wants-to-fix-micropayment-but-demand-is-just-not-there-yet — useful as an early-2026 skeptic's baseline the later 3.1M figure answers.
+
+## Stablecoin volume (Visa/Allium)
+Fetched https://solanacompass.com/news/visa-onchain-analytics-reports-record-179-trillion-in-adjusted-stablecoin-volume-for-june-2026. Visa's onchain analytics (via Allium Labs): $1.79 trillion adjusted stablecoin volume in June 2026; USDC 67% share ($1.21T); +125% YoY; +63% month-over-month from May 2026. Published July 6, 2026. KuCoin corroborates USDC's ~70% H1 2026 share.
+
+## Cloudflare (agent identity)
+Cloudflare press release, "Cloudflare gives AI agents an identity and a wallet," 2026 — https://www.cloudflare.com/press/press-releases/2026/cloudflare-gives-ai-agents-an-identity-and-a-wallet/. Cloudflare also appears among Mastercard's 30+ Agent Pay partners, tying identity and payment rails together.
+
+## Derived 2027 threshold
+Base alone: 3.1M x402 transactions in 30 days ≈ 37M/year run-rate on one network. Visa's stablecoin volume compounded 63% month-over-month as of June 2026. Combining a single network's early run-rate with Mastercard's 30+-partner rail launch and continued compounding, cumulative machine-initiated transactions plausibly cross one billion before the close of 2027. Framed explicitly as an original, transparent derivation for the opinion piece, not a claimed external forecast.
+
+## Angle change
+Dropped the unverified TheStreet/Hillary Remy byline and 5.85M ETH figure; substituted BitMine's confirmed Feb. 2026 holding plus dated 2026 CoinDesk purchase reports to support the Tom Lee/BitMine treasury thread without fabricating precision.

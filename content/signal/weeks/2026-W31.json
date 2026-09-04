@@ -1,0 +1,23 @@
+{
+  "week": "2026-W31",
+  "range": { "start": "2026-07-27", "end": "2026-08-02" },
+  "headline": "Coinbase Crowns an Internal Engineer to Lead Its AI Pivot",
+  "read": "Coinbase opened the window for this year's hiring season with a promotion rather than an outside hire, elevating Rob Witoff from head of platform to chief technology officer on July 28. Chief executive Brian Armstrong credited Witoff directly with pushing the exchange's engineering culture toward near-total reliance on AI-generated code, a claim the company backed with a striking metric: AI-authored, human-reviewed code climbed from under six percent of merges in early 2025 to nearly all of them by mid-2026. The promotion followed a fourteen percent workforce reduction earlier in the year, and read together, the sequence suggests Coinbase views its AI transformation as complete enough to reward the person who built it rather than search externally for a fresh perspective. Crypto firms rarely appear in AI hiring roundups, yet Witoff's ascent signals that exchanges now compete for the same automation gains reshaping software companies broadly. The broader week stayed quiet on the personnel front. Nvidia and OpenAI opened talks toward a guarantee worth up to two hundred fifty billion dollars for infrastructure buildout, a deal size that dwarfs any single salary line item and hints at where industry attention concentrated during these first days of the summer's final stretch. Compute commitments carried the week's real weight, outweighing any single org chart.",
+  "moves": [
+    {
+      "person": "Rob Witoff",
+      "to": "Coinbase",
+      "title": "Chief Technology Officer",
+      "from": "Coinbase",
+      "fromTitle": "Head of Platform",
+      "date": "2026-07-28",
+      "type": "promotion",
+      "confidence": "reported",
+      "sector": "crypto",
+      "sourceUrl": "https://crypto.news/coinbase-names-new-cto-after-14-workforce-cut/",
+      "sourceTitle": "Coinbase Names New CTO After 14% Workforce Cut",
+      "publication": "Crypto.news",
+      "read": "Witoff's promotion rewards the engineer credited with driving Coinbase's near-total AI code adoption."
+    }
+  ]
+}

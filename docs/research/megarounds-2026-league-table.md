@@ -1,0 +1,17 @@
+# Research notes: 26 — The 2026 Megaround League Table
+
+Budget note: session-wide WebSearch quota was exhausted (0/200 remaining) before this article's research began — every parallel article-writing agent shares one pool. Substituted extensive WebFetch calls against live Wikipedia pages (funding sections cite Reuters/Bloomberg/TechCrunch/company releases with verbatim quotes pulled) plus reuse of already-vetted primary-source URLs from sibling articles 08 and 21 in this repo, whose researchers had search budget when they ran.
+
+Verified facts, with URLs:
+
+- OpenAI: Feb 2026, raised $110B at $730B post-money valuation, led by Amazon ($50B), SoftBank ($30B), Nvidia ($30B); extended to $120B in March 2026; by April 2026 closed at $122B committed capital, $852B post-money. Source: en.wikipedia.org/wiki/OpenAI (accessed Sept 4, 2026), verbatim-quoted with citation numbers 88-90, 11-12.
+- Anthropic: Feb 12, 2026, Series G, $30B raised, $380B post-money. May 2026, $65B raised, $965B post-money, led by Altimeter Capital, Dragoneer Investment Group, Sequoia Capital. Aug 2026, cloud-compute agreement with Nscale reportedly worth ~$45B (not equity). Source: en.wikipedia.org/wiki/Anthropic (accessed Sept 4, 2026), citation numbers 103, 51/12, 60.
+- xAI: Feb 2, 2026, all-stock merger into SpaceX — xAI valued at $250B, SpaceX at $1T, combined $1.25T. Not a funding round. Source: en.wikipedia.org/wiki/XAI_(company) citation 8.
+- Databricks: July 2026 first close, $3B led by Coatue Management, $188B valuation. Aug 2026 final close, $5B total, $190B post-money, led by Coatue with Blackstone, MGX, T. Rowe Price, Sixth Street Growth; $7B revenue run rate cited same disclosure. Source: en.wikipedia.org/wiki/Databricks citations 58-59.
+- Mistral AI: March 2026, raised $830M for datacenters near Paris and in Sweden; investors/valuation undisclosed in source. Source: en.wikipedia.org/wiki/Mistral_AI citation 26.
+- Groq: May 2026, reported raising $650M from existing investors (pro-rata, backstopped by Disruptive and Infinitum) to fund pivot to inference cloud. Source: en.wikipedia.org/wiki/Groq citation 25.
+- Perplexity AI: early 2026, Series E-6, $21.21B valuation (amount raised/lead investor undisclosed in source). Source: en.wikipedia.org/wiki/Perplexity_AI.
+- Safe Superintelligence: no 2026 primary round found on SSI's own page; sibling article 08 verified Nvidia's ~$5B investment in SSI reported July 27, 2026 (TechCrunch), still resting on its April 2025 $32B valuation ($2B round). SSI notably raised nothing new in 2026 by Sept 4.
+- Reflection AI: sibling article 08 verified, per Roic.ai (March 2, 2026), Reflection AI sought investors above a $20B valuation, up from $8B on a $2B round closed October 2025 — talks, not a confirmed closed 2026 round.
+- Thinking Machines Lab: no 2026 round found; last raise was the $2B/$12B-valuation round of July 15, 2025 (sibling article 08, Reuters/TradingView) — a name conspicuously absent from 2026's parade.
+- Companies planned but dropped for lack of verifiable 2026 primary-source data within budget: Anysphere/Cursor (only a single, uncorroborated Wikipedia claim about an xAI option/SpaceX acquisition — too weak to print), Cognition, Figure, Physical Intelligence, Cerebras, Crusoe, Lambda, Nscale (as an equity raise). PitchBook/CB Insights/Crunchbase H1 2026 aggregate venture data not independently located within budget; omitted rather than invented.

@@ -1,0 +1,38 @@
+{
+  "week": "2026-W36",
+  "range": { "start": "2026-08-31", "end": "2026-09-06" },
+  "headline": "Apple Crowns Ternus: Succession Planning Triumphs Over Sudden Shakeups",
+  "read": "John Ternus's ascension to Apple's chief executive chair on September 1 closes a succession narrative that circulated in boardrooms for years. Engineers rarely inherit the throne at consumer technology companies; strategists usually do. Ternus built his career on hardware, on chips, thermal design, and the physical guts of iPhones and Macs, which signals where Apple's board believes competitive advantage now lives: in silicon over slogans. Tim Cook's parallel move to executive chairman preserves institutional memory while freeing him for policy diplomacy, a role increasingly vital as governments scrutinize AI supply chains. Read together, the pair of moves reveals a company betting that manufacturing discipline, applied to on-device intelligence, beats flashy model releases. Ternus inherits a firm still catching up on generative features, and his hardware pedigree suggests Apple's next moves emphasize custom silicon and inference efficiency over chatbot benchmarks. Rivals building foundation models compete on parameter counts; Apple appears set to compete on efficiency per watt, a metric consumers feel but rarely name. Investors should watch whether Ternus elevates a dedicated AI leader to his own former altitude, since hardware chiefs historically delegate software strategy. Four days into the role, he has yet to signal that choice publicly. The transition itself, though, already tells the sharper story: succession planning, executed calmly, beats the sudden departures rattling other frontier labs this year.",
+  "moves": [
+    {
+      "person": "John Ternus",
+      "to": "Apple",
+      "title": "Chief Executive Officer",
+      "from": "Apple",
+      "fromTitle": "Senior Vice President, Hardware Engineering",
+      "date": "2026-09-01",
+      "type": "promotion",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://www.apple.com/newsroom/2026/04/tim-cook-to-become-apple-executive-chairman-john-ternus-to-become-apple-ceo/",
+      "sourceTitle": "Tim Cook to Become Apple's Executive Chairman, John Ternus to Become Apple's CEO",
+      "publication": "Apple Newsroom",
+      "read": "Apple hands its silicon strategist the keys, betting hardware discipline outpaces flashy model launches."
+    },
+    {
+      "person": "Tim Cook",
+      "to": "Apple",
+      "title": "Executive Chairman",
+      "from": "Apple",
+      "fromTitle": "Chief Executive Officer",
+      "date": "2026-09-01",
+      "type": "board",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://www.macrumors.com/2026/09/01/john-ternus-is-now-apple-ceo/",
+      "sourceTitle": "John Ternus is Now Apple's CEO",
+      "publication": "MacRumors",
+      "read": "Cook shifts from operator to elder statesman, trading daily execution for policy diplomacy and board oversight."
+    }
+  ]
+}

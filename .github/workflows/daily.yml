@@ -1,0 +1,71 @@
+name: Daily newsdesk
+
+# Drafts one article a day from vetted public sources (company newsrooms, SEC EDGAR 8-K Item 5.02,
+# arXiv), enforces the house style linter, and either commits it live (AUTO_PUBLISH) or opens a
+# pull request for review. LinkedIn is blocked in code; see scripts/lib/guard.mjs.
+
+on:
+  schedule:
+    - cron: "17 11 * * *"   # 11:17 UTC daily (about 7:17am America/New_York)
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Gather and print leads only"
+        type: boolean
+        default: false
+
+concurrency:
+  group: daily-newsdesk
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  draft:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+      - run: npm ci
+      - name: Guardrail tests
+        run: npm run test:guardrails
+      - name: Draft the day's article
+        id: draft
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          AUTO_PUBLISH: ${{ vars.AUTO_PUBLISH }}
+          DRY_RUN: ${{ inputs.dry_run }}
+          SINCE_DAYS: "3"
+        run: node scripts/daily.mjs
+      - name: Detect changes
+        id: changes
+        run: |
+          if [ -n "$(git status --porcelain content/)" ]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+      - name: Publish live (AUTO_PUBLISH)
+        if: steps.changes.outputs.changed == 'true' && vars.AUTO_PUBLISH == 'true' && inputs.dry_run != true
+        run: |
+          git config user.name "AI Lately Newsdesk"
+          git config user.email "editor@ailately.com"
+          git add content/
+          git commit -m "newsdesk: daily article for $(date -u +%Y-%m-%d)"
+          git push
+      - name: Open a review pull request
+        if: steps.changes.outputs.changed == 'true' && vars.AUTO_PUBLISH != 'true' && inputs.dry_run != true
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: newsdesk/${{ github.run_id }}
+          title: "Newsdesk draft for review"
+          commit-message: "newsdesk: daily draft"
+          body: |
+            Automated draft from the daily newsdesk. It passed the house style linter and the guardrail tests.
+            Review the facts and sources, then merge to publish (Vercel redeploys on merge).
+          add-paths: content/
