@@ -27,6 +27,8 @@ The two absolute prohibitions, which you MUST triple-check across the title, dek
 
 Length 1,000–2,100 words of body prose. Open with a hyperbolic claim powered by one real statistic, then stay grounded. Alliterative headline. Bracketed [n] source markers matching the sources list. Academic, analytical register; high burstiness (mix short and long sentences).
 
+Include at least TWO verbatim quotes from named people, each drawn from a cited source, and read each one for its subtext: state the plain meaning, then examine the tell (a possessive, a chosen verb, a telling adjective, who approached whom, the order of the clauses) and draw the novel, clever inference the phrasing invites. Ground every inference in the words on the record. Pick quotes whose exact wording clears the two prohibitions; when a real quote carries a banned token, quote the clean fragment and paraphrase the rest with attribution.
+
 ## Step 4 — Enforce
 Run: `node scripts/lint-style.mjs content/articles/<your-file>.md`
 Fix every error it reports and rerun until it prints "0 failing". Soft warnings are acceptable; errors are not.
