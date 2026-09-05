@@ -45,6 +45,14 @@ Lean toward alliteration with class: "Talent Tectonics," "Reasoning's Rebate," "
 - Personal data stays within the allowlist: name, role, employer, public source, date.
 - Opinion pieces carry `kind: opinion` and are the only place for bold predictions; even there, the numbers are real and cited.
 
+## Quotations and their subtext
+
+Every piece carries at least two verbatim quotes from named people, drawn from cited primary sources or reputable press, and each quote earns its place by advancing an argument. Attribution names the speaker and the source marker.
+
+The house move is interpretive: read the quote for what its speaker left unspoken. State the plain meaning, then turn to the tell — a possessive pronoun, a chosen verb, a telling adjective, who approached whom, the order of the clauses — and draw the novel, clever inference the phrasing invites. Signposts such as "the tell hides here," "weigh the possessive," "study the verbs," or "the deeper insinuation" mark the shift from quotation to reading. Ground every inference in the words on the record; the cleverness lives in the interpretation, never in inventing what the person said.
+
+Pick quotes whose exact wording clears the two prohibitions (zero via negativa, zero anaphora). When a verbatim quote carries a banned token, quote the clean fragment and paraphrase the rest with attribution.
+
 ## Markdown format
 
 ```markdown
