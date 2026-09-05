@@ -9,7 +9,7 @@ people: ["Jony Ive", "Sam Altman", "Varun Mohan", "Douglas Chen", "Alexandr Wang
 companies: ["OpenAI", "io Products", "Windsurf", "Google", "Cognition AI", "Meta", "Scale AI", "Nvidia", "Groq", "CoreWeave", "Core Scientific", "ServiceNow", "Moveworks"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2025-07-14
 order: 28
 featured: false
 image: ""

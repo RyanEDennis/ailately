@@ -10,7 +10,7 @@ people: ["Sam Altman", "Dario Amodei", "Elon Musk", "Ali Ghodsi", "Ilya Sutskeve
 companies: ["OpenAI", "Anthropic", "xAI", "SpaceX", "Databricks", "Mistral AI", "Groq", "Perplexity", "Safe Superintelligence", "Thinking Machines Lab", "Reflection AI"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-07-27
 order: 26
 featured: false
 image: ""

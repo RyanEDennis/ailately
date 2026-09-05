@@ -9,7 +9,7 @@ people: ["Tim Hafner", "Lucas Hafner", "Armağan Amcalar", "Eyup Cinar", "Andres
 companies: ["OpenServ Labs", "Bittensor"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-01
 order: 37
 featured: false
 image: ""

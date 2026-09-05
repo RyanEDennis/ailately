@@ -9,7 +9,7 @@ people: ["Mark Zuckerberg", "Alexandr Wang", "Nat Friedman", "Daniel Gross", "Sh
 companies: ["Meta", "Scale AI", "Apple", "OpenAI", "Google DeepMind", "Safe Superintelligence", "Advanced Machine Intelligence Labs"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-01-03
 order: 3
 featured: false
 series: "2026 in Stories"

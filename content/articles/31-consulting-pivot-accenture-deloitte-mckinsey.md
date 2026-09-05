@@ -9,7 +9,7 @@ people: ["Julie Sweet", "Bob Sternfels", "Jason Girzadas", "Joseph Ucuzoglu"]
 companies: ["Accenture", "Deloitte", "McKinsey & Company", "Neuberger Berman"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2025-11-24
 order: 31
 featured: false
 image: ""

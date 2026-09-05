@@ -9,7 +9,7 @@ people: ["Alexandr Wang", "Daniel Gross", "Shengjia Zhao", "Ruoming Pang", "Fidj
 companies: ["Meta", "Scale AI", "OpenAI", "Google DeepMind", "Microsoft", "Anthropic", "Safe Superintelligence", "Thinking Machines Lab", "Apple", "Amazon", "Windsurf", "Character.AI", "Inflection AI", "xAI"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2025-08-01
 order: 1
 featured: true
 image: ""

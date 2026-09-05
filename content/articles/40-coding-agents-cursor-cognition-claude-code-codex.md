@@ -9,7 +9,7 @@ people: ["Michael Truell", "Scott Wu", "Anton Osika", "Amjad Masad", "Steven Hao
 companies: ["Anysphere", "Cognition AI", "Windsurf", "Lovable", "Replit", "OpenAI", "Anthropic", "GitHub", "Microsoft"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-04-27
 order: 40
 featured: false
 image: ""

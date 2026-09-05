@@ -9,7 +9,7 @@ people: ["Henna Virkkunen", "Natasha Crampton", "Mariano-Florentino Cuéllar"]
 companies: ["European Commission", "Anthropic", "Microsoft", "Meta", "xAI", "Google", "OpenAI", "Amazon", "Mistral AI"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-04
 order: 32
 featured: false
 series: "2026 in Stories"

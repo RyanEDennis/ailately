@@ -9,7 +9,7 @@ people: ["Marc Benioff", "Bill McDermott", "Alex Karp", "Shyam Sankar", "Judson 
 companies: ["Salesforce", "ServiceNow", "Palantir Technologies", "Microsoft", "SAP", "Workday", "UiPath", "Anthropic"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-26
 order: 29
 featured: false
 image: ""

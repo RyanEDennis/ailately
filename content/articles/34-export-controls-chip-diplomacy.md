@@ -9,7 +9,7 @@ people: ["Jensen Huang", "Tareq Amin", "Peng Xiao", "Tahnoun bin Zayed Al Nahyan
 companies: ["Nvidia", "Humain", "G42", "OpenAI", "Oracle", "SoftBank Group", "Cisco", "AMD", "Qualcomm"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-27
 order: 34
 featured: false
 image: ""

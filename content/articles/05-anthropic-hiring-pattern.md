@@ -9,7 +9,7 @@ people: ["Krishna Rao", "Mike Krieger", "Mariano-Florentino Cuéllar"]
 companies: ["Anthropic", "Airbnb", "Instagram", "Figma", "Deloitte", "OpenAI"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-17
 order: 5
 featured: false
 image: ""

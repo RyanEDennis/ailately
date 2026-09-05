@@ -9,7 +9,7 @@ people: ["Chris Lehane", "Jack Clark", "Kent Walker", "Brad Smith", "Joel Kaplan
 companies: ["OpenAI", "Anthropic", "Google", "Microsoft", "Meta", "Andreessen Horowitz", "Palantir"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-04
 order: 33
 featured: false
 series: "2026 in Stories"
