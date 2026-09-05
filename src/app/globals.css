@@ -203,7 +203,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .switch { position: relative; display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; border: 1px solid var(--rule); border-radius: 999px; padding: 3px; background: var(--color-paper); font-family: var(--font-sans); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.02em; }
 .switch a { position: relative; z-index: 1; padding: 0.35rem 0.95rem; border-radius: 999px; text-align: center; color: var(--color-ink-soft); transition: color 200ms ease; }
 .switch a[aria-current="page"] { color: var(--color-paper); }
-.switch__pill { position: absolute; top: 3px; bottom: 3px; width: calc((100% - 6px) / var(--n, 2)); left: calc(3px + var(--i, 0) * (100% - 6px) / var(--n, 2)); border-radius: 999px; background: var(--color-ink); transition: left 420ms var(--ease-spring); }
+.switch__pill { position: absolute; top: 3px; bottom: 3px; width: calc((100% - 6px) / var(--n, 2)); left: calc(3px + var(--i, 0) * (100% - 6px) / var(--n, 2)); border-radius: 999px; background: linear-gradient(100deg, var(--color-blue), var(--color-peri) 55%, var(--color-magenta)); transition: left 420ms var(--ease-spring); }
 
 /* Staggered reveal */
 .reveal > * { animation: rise 640ms var(--ease-out-quint) both; }
@@ -439,3 +439,43 @@ html.home { scroll-snap-type: y proximity; }
   a::after { content: ""; }
   .prose ol.sources a::after { content: " (" attr(href) ")"; font-size: 0.8em; }
 }
+
+/* ------------------------------------------------------------------
+   Masthead — aurora glow, gradient wordmark, gradient rule.
+   ------------------------------------------------------------------ */
+.masthead { position: relative; isolation: isolate; overflow: hidden; }
+.aurora { position: absolute; inset: -34% -12% auto -12%; height: 340px; z-index: 0; filter: blur(62px); opacity: 0.42; pointer-events: none; }
+.aurora i { position: absolute; display: block; border-radius: 999px; will-change: transform; }
+.aurora i:nth-child(1) { width: 40%; height: 230px; left: 1%; top: 8px; background: radial-gradient(circle, var(--color-blue), transparent 70%); animation: aurora-drift 17s var(--ease-out-quint) infinite alternate; }
+.aurora i:nth-child(2) { width: 36%; height: 230px; left: 33%; top: 0; background: radial-gradient(circle, var(--color-peri), transparent 70%); animation: aurora-drift 21s var(--ease-out-quint) infinite alternate-reverse; }
+.aurora i:nth-child(3) { width: 34%; height: 230px; right: 2%; top: 14px; background: radial-gradient(circle, var(--color-magenta), transparent 70%); animation: aurora-drift 25s var(--ease-out-quint) infinite alternate; }
+@keyframes aurora-drift { to { transform: translate3d(3%, -8%, 0) scale(1.14); } }
+
+.wordmark--grad {
+  background: linear-gradient(100deg, var(--color-blue), var(--color-peri) 34%, var(--color-magenta) 62%, var(--color-mocha));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: wm-shimmer 9s linear infinite;
+}
+@keyframes wm-shimmer { to { background-position: 200% 0; } }
+
+.gradbar { height: 4px; border-radius: 999px; background: linear-gradient(90deg, var(--color-blue), var(--color-peri) 26%, var(--color-magenta) 52%, var(--color-mocha) 74%, var(--color-peach)); }
+
+/* Glass bar — a frosted, app-style header that arrives on scroll. */
+.glassbar { position: fixed; left: 0; right: 0; top: 0; z-index: 50; padding: 10px 16px; transform: translateY(-115%); opacity: 0; transition: transform 420ms var(--ease-out-quint), opacity 300ms ease; pointer-events: none; }
+.glassbar.is-on { transform: none; opacity: 1; pointer-events: auto; }
+.glassbar__inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 9px 16px; border-radius: 14px; border: 1px solid color-mix(in oklab, var(--color-ink) 8%, transparent); background: color-mix(in oklab, var(--color-paper) 72%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); box-shadow: 0 18px 40px -30px color-mix(in oklab, var(--color-ink) 55%, transparent); }
+.glassbar__word { font-family: var(--font-serif); font-weight: 500; font-size: 1.25rem; letter-spacing: -0.01em; font-variation-settings: "opsz" 40; }
+.glassbar__nav { display: flex; gap: 18px; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; color: var(--color-ink-soft); overflow-x: auto; scrollbar-width: none; }
+.glassbar__nav::-webkit-scrollbar { display: none; }
+.glassbar__nav a { position: relative; padding-bottom: 4px; white-space: nowrap; transition: color 200ms ease; }
+.glassbar__nav a:hover { color: var(--color-ink); }
+.glassbar__nav a.on { color: var(--color-ink); }
+.glassbar__nav a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 999px; background: linear-gradient(90deg, var(--color-blue), var(--color-peri), var(--color-magenta)); }
+.statuspill { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; font-family: var(--font-sans); font-weight: 600; font-size: 0.78rem; color: var(--color-ink); padding: 0.42rem 0.8rem; border-radius: 999px; background: var(--color-paper); white-space: nowrap; }
+.statuspill::before { content: ""; position: absolute; inset: 0; border-radius: 999px; padding: 1.5px; background: conic-gradient(from var(--beam-angle), transparent 0 55%, var(--color-blue) 66%, var(--color-magenta) 80%, var(--color-mocha) 92%, transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: beam-spin 7s linear infinite; pointer-events: none; }
+.statuspill .sd { width: 7px; height: 7px; border-radius: 999px; background: var(--color-greenery); box-shadow: 0 0 8px var(--color-greenery); }
+@media (max-width: 640px) { .statuspill { display: none; } .glassbar__nav { font-size: 0.8rem; gap: 14px; } .glassbar__word { font-size: 1.1rem; } }
