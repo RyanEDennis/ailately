@@ -15,7 +15,7 @@ AI Lately covers artificial intelligence through the people who build it. Every 
 
 ## Two sections
 
-**Articles** hold the analysis: data-heavy pieces across every category of AI today, from hiring and agent infrastructure to compute, capital, policy, safety, and the crossover between web3 and AI. Each piece opens with a hyperbolic claim powered by one real statistic; the rest of the piece earns that claim with cited evidence.
+**Articles** hold the analysis: data-heavy pieces across every category of AI today, from hiring and agent infrastructure to compute, capital, policy, safety, and the crossover between web3 and AI. Each one carries its argument on cited evidence and names the people whose choices drive the story.
 
 **The Signal** carries the weekly feed of the biggest hires in AI. One question governs every entry: what capability did this company just buy, and what does it imply about the next twelve months? Each move records person, destination, title, origin, date, and a public source, plus a confidence label of confirmed, reported, or inferred.
 
@@ -32,7 +32,3 @@ AI Lately holds zero equity, tokens, or advisory positions at any company it cov
 ## For machines
 
 Machines get their own doors: the site publishes [llms.txt](/llms.txt) and [llms-full.txt](/llms-full.txt) for language models, a [JSON version of The Signal](/api/signal), an [RSS feed](/feed.xml), and a [sitemap](/sitemap.xml). Quote with attribution and a link to the canonical URL.
-
-## Design
-
-White, by decision. Every chromatic color is a Pantone Color of the Year, from Classic Blue for links to Cloud Dancer for panels, and the colophon in the footer lists each one. Newsreader carries the reading, Inter carries the wayfinding, and JetBrains Mono carries the figures. Press the question mark key anywhere for keyboard shortcuts.

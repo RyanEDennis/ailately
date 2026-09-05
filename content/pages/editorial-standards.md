@@ -43,10 +43,6 @@ Errors get fixed fast and in the open. A corrected piece carries a note describi
 
 The daily automated report is drafted by software from vetted public sources, passes the house style linter, and publishes with a visible label. Its author line names the pipeline. A reader can report an error through the same corrections address, and the editor can pull any automated piece at any time. The pipeline works from an allowlist of public sources and carries a hard block on professional social networks.
 
-## House style
-
-Every piece opens with a hyperbolic claim powered by one real statistic, then grounds itself in evidence. Headlines lean toward alliteration. Writing stays in the affirmative: the desk describes what things are, and it rotates sentence openers so that rhythm stays varied. Pieces run between 1,000 and 2,100 words. A linter enforces those rules before any piece goes live.
-
 ## Source protection
 
 Conversations with sources happen on channels the source chooses. Source identities live apart from the editorial research base, and the editor decided the publication's posture on protecting a source before the first source ever needed it: sources stay protected.
