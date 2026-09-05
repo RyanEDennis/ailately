@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import KeyboardShortcuts from "@/components/KeyboardShortcuts";
-import { getWeeks, getStats } from "@/lib/content";
+import { getWeeks } from "@/lib/content";
 
 const newsreader = localFont({
   src: [
@@ -51,7 +51,6 @@ export const viewport: Viewport = { themeColor: "#ffffff", colorScheme: "light",
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   const weeks = await getWeeks();
-  const stats = await getStats();
   const latest = weeks.flatMap((w) => w.moves.map((m) => ({ ...m, week: w.week }))).sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 8);
   return (
     <html lang="en" className={`${newsreader.variable} ${inter.variable} ${mono.variable}`}>
@@ -61,7 +60,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
         </a>
         <Header latest={latest} />
         <main id="main" className="mx-auto w-full max-w-[1180px] px-5 sm:px-8">{children}</main>
-        <Footer stats={stats} />
+        <Footer />
         <KeyboardShortcuts />
       </body>
     </html>

@@ -281,6 +281,156 @@ kbd { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.1rem 0.4rem;
 /* Palette swatches */
 .swatch { width: 100%; aspect-ratio: 1 / 0.62; border-radius: 4px; border: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent); }
 
+/* ------------------------------------------------------------------
+   Home feed — a vertical, full-viewport, snap-scrolling story feed.
+   Snap turns on only on the homepage (html.home), so article pages
+   with anchor navigation stay untouched.
+   ------------------------------------------------------------------ */
+html.home { scroll-snap-type: y proximity; }
+@media (max-width: 640px) { html.home { scroll-snap-type: y mandatory; } }
+@media (prefers-reduced-motion: reduce) { html.home { scroll-snap-type: none; } }
+
+.home-feed {
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  width: 100vw;
+  overflow-x: clip;
+}
+
+.panel {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  scroll-snap-align: start;
+  padding: clamp(4rem, 9vh, 7rem) 0 clamp(3rem, 7vh, 5rem);
+  overflow: hidden;
+  isolation: isolate;
+}
+@media (max-width: 640px) { .panel { scroll-snap-stop: always; } }
+.panel + .panel { border-top: 1px solid var(--rule); }
+
+.panel__inner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 62rem;
+  margin: 0 auto;
+  padding-inline: clamp(1.25rem, 5vw, 3.25rem);
+  animation: panel-rise 720ms var(--ease-out-quint) both;
+}
+@keyframes panel-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+.panel__eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; }
+.panel__title {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  line-height: 1.02;
+  font-size: clamp(2.1rem, 6.4vw, 4.3rem);
+  font-variation-settings: "opsz" 72;
+  text-wrap: balance;
+}
+.panel__dek {
+  margin-top: 1rem;
+  max-width: 44ch;
+  font-size: clamp(1.05rem, 2.3vw, 1.35rem);
+  line-height: 1.4;
+  color: var(--color-ink-soft);
+}
+.panel__epi {
+  margin-top: 1.4rem;
+  max-width: 40ch;
+  font-style: italic;
+  font-size: clamp(1.05rem, 2.4vw, 1.4rem);
+  line-height: 1.32;
+  color: var(--color-ink);
+  font-variation-settings: "opsz" 40;
+}
+
+/* Ambient Pantone orbs drifting behind a panel (kept demure). */
+.orb-field { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; }
+.orb-blob {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(46px);
+  opacity: 0.22;
+  will-change: transform;
+  animation: drift 20s var(--ease-out-quint) infinite alternate;
+}
+.orb-blob--a { width: 42vmin; height: 42vmin; top: -8vmin; left: -6vmin; background: radial-gradient(circle at 30% 30%, var(--accent, var(--color-blue)), transparent 70%); }
+.orb-blob--b { width: 34vmin; height: 34vmin; bottom: -10vmin; right: -4vmin; background: radial-gradient(circle at 60% 40%, var(--color-mocha), transparent 70%); animation-delay: -6s; animation-duration: 26s; }
+.orb-blob--c { width: 24vmin; height: 24vmin; top: 40%; right: 22%; background: radial-gradient(circle at 50% 50%, var(--color-peach), transparent 70%); opacity: 0.16; animation-delay: -12s; animation-duration: 32s; }
+@keyframes drift { from { transform: translate3d(0,0,0) scale(1); } to { transform: translate3d(3vmin,-4vmin,0) scale(1.12); } }
+
+/* Gooey merge — an SVG filter fuses these low-opacity blobs. */
+.goo { position: absolute; inset: 0; z-index: 0; pointer-events: none; overflow: hidden; filter: url(#ail-goo); opacity: 0.09; }
+.goo span { position: absolute; display: block; border-radius: 999px; background: var(--accent, var(--color-peri)); }
+.goo span:nth-child(1) { width: 15vmin; height: 15vmin; right: 6%; top: 12%; animation: goo1 16s ease-in-out infinite; }
+.goo span:nth-child(2) { width: 11vmin; height: 11vmin; right: 14%; top: 24%; animation: goo2 20s ease-in-out infinite; }
+.goo span:nth-child(3) { width: 8vmin; height: 8vmin; right: 3%; top: 20%; animation: goo1 24s ease-in-out infinite reverse; }
+@keyframes goo1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(6vmin,3vmin); } }
+@keyframes goo2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-4vmin,5vmin); } }
+
+/* Metallic CTA — a slow sheen travels across the pill. */
+.cta-metal {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 0.92rem;
+  letter-spacing: 0.01em;
+  color: var(--color-paper);
+  background: linear-gradient(100deg, var(--color-ink) 0%, #313b45 26%, #1a2129 46%, var(--color-ink) 70%);
+  background-size: 230% 100%;
+  padding: 0.72rem 1.2rem;
+  border-radius: 999px;
+  box-shadow: 0 10px 26px -16px color-mix(in oklab, var(--color-ink) 70%, transparent);
+  animation: metal-sweep 6.5s linear infinite;
+  transition: transform 240ms var(--ease-spring);
+}
+.cta-metal:hover { transform: translateY(-1px); }
+.cta-ghost {
+  display: inline-flex; align-items: center; gap: 0.4rem;
+  font-family: var(--font-sans); font-weight: 600; font-size: 0.88rem;
+  color: var(--color-ink-soft);
+  border: 1px solid var(--rule-strong);
+  padding: 0.62rem 1.05rem; border-radius: 999px;
+  transition: border-color 220ms ease, color 220ms ease;
+}
+.cta-ghost:hover { border-color: var(--accent, var(--color-blue)); color: var(--accent, var(--color-blue)); }
+@keyframes metal-sweep { to { background-position: -230% 0; } }
+
+/* People / move pills on a panel */
+.panel__people { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1.35rem; }
+.pill-name { font-family: var(--font-sans); font-size: 0.78rem; color: var(--color-ink-soft); border: 1px solid var(--rule); border-radius: 999px; padding: 0.2rem 0.6rem; background: color-mix(in oklab, var(--color-cloud) 55%, white); }
+
+/* Signal move line on a panel */
+.move-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.5rem; padding: 0.7rem 0; border-top: 1px solid var(--rule); font-family: var(--font-sans); font-size: 0.95rem; }
+.move-line:first-child { border-top: 0; }
+.move-line .who { font-weight: 600; color: var(--color-ink); }
+.move-line .to { color: var(--color-ink-soft); }
+
+/* Scroll cue */
+.scroll-cue { position: absolute; left: 50%; bottom: clamp(1.1rem, 3vh, 2rem); transform: translateX(-50%); z-index: 3; display: inline-flex; flex-direction: column; align-items: center; gap: 0.25rem; font-family: var(--font-sans); font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-gray); }
+.scroll-cue span { display: block; width: 1px; height: 1.6rem; background: linear-gradient(var(--color-gray), transparent); animation: cue 1.9s var(--ease-out-quint) infinite; }
+@keyframes cue { 0% { transform: scaleY(0.2); transform-origin: top; opacity: 0.2; } 40% { transform: scaleY(1); opacity: 1; } 100% { transform: scaleY(1); transform-origin: bottom; opacity: 0; } }
+
+/* Dot navigation (spatial, no counts) */
+.home-dots { position: fixed; right: clamp(0.6rem, 1.6vw, 1.4rem); top: 50%; transform: translateY(-50%); z-index: 55; display: none; flex-direction: column; gap: 0.7rem; }
+@media (min-width: 900px) { .home-dots { display: flex; } }
+.home-dots button { width: 8px; height: 8px; border-radius: 999px; border: 1px solid var(--color-gray); background: transparent; padding: 0; cursor: pointer; transition: transform 260ms var(--ease-spring), background 220ms ease, border-color 220ms ease; }
+.home-dots button[aria-current="true"] { background: var(--color-ink); border-color: var(--color-ink); transform: scale(1.5); }
+.home-dots button:hover { border-color: var(--color-ink); }
+
+/* Mobile edge progress bar for the feed */
+.home-progress { position: fixed; left: 0; right: 0; top: 0; height: 2px; z-index: 55; background: transparent; }
+.home-progress i { display: block; height: 100%; width: var(--p, 0%); background: linear-gradient(90deg, var(--color-blue), var(--color-magenta)); transition: width 120ms linear; }
+@media (min-width: 900px) { .home-progress { display: none; } }
+
 /* Print */
 @media print {
   header, footer, nav, .no-print { display: none !important; }

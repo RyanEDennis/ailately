@@ -1,23 +1,96 @@
-import Link from "next/link";
-import { getArticles, getPosts, getWeeks, getPeople } from "@/lib/content";
-import { LeadCard, SideCard } from "@/components/FeaturedCard";
-import ArticleList from "@/components/ArticleList";
-import MovesList from "@/components/Moves";
-import { toListItem, categoryCounts } from "@/lib/list";
-import { formatRange } from "@/lib/slug";
+import { getArticles, getWeeks } from "@/lib/content";
+import type { Piece } from "@/lib/content";
+import HomeFeed, { type Panel } from "@/components/HomeFeed";
+import { formatRange, formatDate } from "@/lib/slug";
 import { SITE } from "@/lib/site";
+
+const ACCENT: Record<string, string> = {
+  hiring: "#88B04B",
+  agents: "#6667AB",
+  models: "#0F4C81",
+  compute: "#A47864",
+  capital: "#BE3455",
+  enterprise: "#0F4C81",
+  policy: "#6667AB",
+  safety: "#FF6F61",
+  web3: "#A47864",
+  applied: "#88B04B",
+  consumer: "#FF6F61",
+  labor: "#0F4C81",
+  research: "#6667AB",
+  geopolitics: "#FF6F61",
+};
+
+function accentFor(p: Piece): string {
+  return ACCENT[p.category] ?? "#0F4C81";
+}
+
+function metaFor(p: Piece): string {
+  return `${p.readingMinutes} min read · ${p.sources.length} source${p.sources.length === 1 ? "" : "s"}`;
+}
+
+function badgeFor(p: Piece): string | undefined {
+  if (p.automated) return "Automated report";
+  if (p.slug === "biggest-ai-hires-of-2025") return "The first post";
+  if (p.featured) return "Featured";
+  if (p.date) return formatDate(p.date, { month: "short", day: "numeric", year: "numeric" });
+  return undefined;
+}
+
+function storyPanel(p: Piece, opts: { lead?: boolean; epigraph?: boolean } = {}): Panel {
+  return {
+    type: "story",
+    href: `/articles/${p.slug}`,
+    kicker: p.categoryLabel,
+    kindLabel: p.kindLabel,
+    title: p.title,
+    dek: p.dek,
+    accent: accentFor(p),
+    epigraph: opts.epigraph && p.epigraph?.text ? { text: p.epigraph.text, stat: p.epigraph.stat } : undefined,
+    people: p.people,
+    meta: metaFor(p),
+    cta: opts.lead ? "Read the analysis" : "Read",
+    badge: opts.lead ? undefined : badgeFor(p),
+    lead: opts.lead,
+  };
+}
 
 export default async function Home() {
   const articles = await getArticles();
-  const posts = await getPosts();
   const weeks = await getWeeks();
-  const people = await getPeople();
 
-  const lead = articles.find((a) => a.slug === "biggest-ai-hires-of-2026-so-far") ?? articles.find((a) => a.featured) ?? articles[0];
+  const lead =
+    articles.find((a) => a.slug === "biggest-ai-hires-of-2026-so-far") ??
+    articles.find((a) => a.featured) ??
+    articles[0];
   const featured = articles.filter((a) => a.featured && a.slug !== lead.slug).slice(0, 2);
-  const rest = articles.filter((a) => a.slug !== lead.slug && !featured.some((f) => f.slug === a.slug));
+  const shown = new Set<string>([lead.slug, ...featured.map((f) => f.slug)]);
+  const recent = articles.filter((a) => !shown.has(a.slug)).slice(0, 4);
   const week = weeks.find((w) => w.moves.length) ?? weeks[0];
-  const mostMentioned = [...people].sort((a, b) => b.pieces.length + b.moves.length - (a.pieces.length + a.moves.length)).slice(0, 12);
+
+  const panels: Panel[] = [];
+  panels.push(storyPanel(lead, { lead: true, epigraph: true }));
+  if (week) {
+    panels.push({
+      type: "signal",
+      weekHref: `/signal/${week.week}`,
+      weekLabel: week.week,
+      range: formatRange(week.range.start, week.range.end),
+      headline: week.headline,
+      read: week.read,
+      moves: week.moves.slice(0, 3).map((m) => ({
+        person: m.person,
+        to: m.to,
+        title: m.title,
+        type: m.type,
+        confidence: m.confidence,
+        date: m.date,
+      })),
+    });
+  }
+  for (const f of featured) panels.push(storyPanel(f, { epigraph: true }));
+  for (const r of recent) panels.push(storyPanel(r));
+  panels.push({ type: "exit", articlesCount: articles.length, thesis: SITE.tagline });
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -30,78 +103,7 @@ export default async function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <section className="grid gap-5 pt-8 lg:grid-cols-[1.55fr_1fr]" aria-label="Featured">
-        <LeadCard piece={lead} />
-        <div className="grid gap-5">
-          {featured.map((f) => (
-            <SideCard key={f.slug} piece={f} label={f.slug.includes("2025") ? "The first post" : "Featured"} />
-          ))}
-        </div>
-      </section>
-
-      <section className="mt-12 grid gap-12 lg:grid-cols-[1fr_19rem]">
-        <div>
-          <div className="flex items-baseline justify-between rule-strong pt-4 pb-3">
-            <h2 className="kicker">Articles · {SITE.edition}</h2>
-            <Link href="/articles" className="meta hover:text-blue">All {articles.length} pieces →</Link>
-          </div>
-          <ArticleList items={rest.map(toListItem)} categories={categoryCounts(rest)} />
-        </div>
-
-        <aside className="space-y-12" aria-label="Sidebar">
-          {week && (
-            <section>
-              <div className="flex items-baseline justify-between rule-strong pt-4 pb-3">
-                <h2 className="kicker kicker--peri inline-flex items-center gap-2">
-                  <span className="orbs" aria-hidden="true"><i /><i /><i /></span> The Signal
-                </h2>
-                <Link href="/signal" className="meta hover:text-blue">Feed →</Link>
-              </div>
-              <p className="meta tnum">{week.week} · {formatRange(week.range.start, week.range.end)}</p>
-              <h3 className="mt-2 text-[1.25rem] leading-tight font-medium">
-                <Link href={`/signal/${week.week}`} className="u-draw">{week.headline}</Link>
-              </h3>
-              <p className="mt-2 text-[0.92rem] leading-snug text-ink-soft line-clamp-5">{week.read}</p>
-              <div className="mt-3">
-                <MovesList moves={week.moves.slice(0, 3)} compact />
-              </div>
-            </section>
-          )}
-
-          <section>
-            <div className="flex items-baseline justify-between rule-strong pt-4 pb-3">
-              <h2 className="kicker kicker--mocha">Opinion</h2>
-              <Link href="/blog" className="meta hover:text-blue">All →</Link>
-            </div>
-            <ol className="list-none p-0 m-0 space-y-4">
-              {posts.map((p) => (
-                <li key={p.slug} className="row" data-row data-selected="false">
-                  <p className="meta">{p.byline ?? p.author}</p>
-                  <h3 className="text-[1.08rem] leading-snug font-medium">
-                    <Link href={`/blog/${p.slug}`} data-primary className="u-draw">{p.title}</Link>
-                  </h3>
-                </li>
-              ))}
-            </ol>
-          </section>
-
-          <section>
-            <div className="flex items-baseline justify-between rule-strong pt-4 pb-3">
-              <h2 className="kicker">People, lately</h2>
-              <Link href="/people" className="meta hover:text-blue">Index →</Link>
-            </div>
-            <ul className="sans flex flex-wrap gap-1.5 text-[0.8rem]">
-              {mostMentioned.map((p) => (
-                <li key={p.slug}>
-                  <Link href={`/people/${p.slug}`} className="inline-block rounded-full border border-ink/15 px-2.5 py-0.5 text-ink-soft transition hover:border-blue hover:text-blue">
-                    {p.name} <span className="tnum text-gray">{p.pieces.length + p.moves.length}</span>
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        </aside>
-      </section>
+      <HomeFeed panels={panels} />
     </>
   );
 }
