@@ -9,7 +9,7 @@ people: ["Ruoming Pang", "Ke Yang", "John Giannandrea", "Amar Subramanya", "John
 companies: ["Apple", "Meta", "Google", "CuspAI", "Microsoft"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-02
 order: 6
 featured: false
 series: "2026 in Stories"

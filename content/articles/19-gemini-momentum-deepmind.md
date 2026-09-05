@@ -9,7 +9,7 @@ people: ["Demis Hassabis", "Jeff Dean", "Oriol Vinyals", "Quoc Le"]
 companies: ["Google", "Google DeepMind", "Discovery Loop", "Khosla Ventures"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-05
 order: 19
 featured: false
 image: ""

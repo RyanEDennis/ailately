@@ -9,7 +9,7 @@ people: ["Jensen Huang", "Colette Kress", "Sam Altman", "Greg Brockman", "Sarah 
 companies: ["Nvidia", "OpenAI", "SoftBank", "SB Energy", "AMD", "Oracle", "Broadcom", "Microsoft"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-01
 order: 21
 featured: false
 series: "2026 in Stories"

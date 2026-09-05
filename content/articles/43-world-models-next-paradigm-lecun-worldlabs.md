@@ -9,7 +9,7 @@ people: ["Yann LeCun", "Alexandre LeBrun", "Fei-Fei Li", "Lachy Grooms", "Jack P
 companies: ["AMI Labs", "World Labs", "Physical Intelligence", "Figure AI", "Google DeepMind", "Nvidia", "Discovery Loop"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-03
 order: 43
 featured: false
 image: ""

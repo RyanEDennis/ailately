@@ -9,7 +9,7 @@ people: ["Erik Brynjolfsson", "Andy Challenger", "Nathan Goldschlag"]
 companies: ["Stanford Digital Economy Lab", "Challenger Gray & Christmas", "Federal Reserve Bank of New York", "Yale Budget Lab", "Economic Innovation Group", "Visa"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-02
 order: 42
 featured: false
 image: ""

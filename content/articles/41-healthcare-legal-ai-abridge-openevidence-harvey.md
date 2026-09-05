@@ -9,7 +9,7 @@ people: ["Shiv Rao", "San Oo", "Daniel Nadler", "Max Junestrand", "Steve Zad"]
 companies: ["Abridge", "OpenEvidence", "Harvey", "Legora", "Ambience Healthcare", "Kensho Technologies"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-04
 order: 41
 featured: false
 image: ""

@@ -9,7 +9,7 @@ people: ["Koray Kavukcuoglu", "Demis Hassabis", "Jeff Dean", "Sanjay Ghemawat", 
 companies: ["Google", "Google DeepMind", "Windsurf", "Discovery Loop", "Character.AI", "OpenAI", "Anthropic", "Meta", "Alphabet"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-27
 order: 7
 featured: false
 image: ""

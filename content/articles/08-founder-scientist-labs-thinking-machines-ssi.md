@@ -9,7 +9,7 @@ people: ["Mira Murati", "Ilya Sutskever", "Yann LeCun", "Jeff Dean", "Andrew Tul
 companies: ["Thinking Machines Lab", "Safe Superintelligence", "Discovery Loop", "AMI Labs", "Periodic Labs", "Reflection AI", "Meta", "OpenAI", "Nvidia"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-05
 order: 8
 featured: false
 image: ""

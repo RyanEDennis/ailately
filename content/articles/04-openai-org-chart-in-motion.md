@@ -9,7 +9,7 @@ people: ["Fidji Simo", "Kevin Weil", "Bill Peebles", "Srinivas Narayanan", "Noam
 companies: ["OpenAI", "Google", "Character.AI", "ChronicleBio", "Instacart"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-14
 order: 4
 featured: false
 series: "2026 in Stories"

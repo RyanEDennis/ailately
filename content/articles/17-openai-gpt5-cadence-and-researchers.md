@@ -9,7 +9,7 @@ people: ["Jakub Pachocki", "Mark Chen", "Jerry Tworek", "Noam Shazeer"]
 companies: ["OpenAI", "Google", "Nvidia"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-01
 order: 17
 featured: false
 image: ""

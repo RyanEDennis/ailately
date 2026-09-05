@@ -9,7 +9,7 @@ people: ["David Rice", "Georges Elhedery", "Mario Shamtani", "Ranil Boteju", "Ch
 companies: ["HSBC", "Commonwealth Bank of Australia", "Bank of Ireland", "Target", "Pfizer", "UnitedHealth Group", "SCAN", "New York Life"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-11
 order: 10
 featured: false
 image: ""

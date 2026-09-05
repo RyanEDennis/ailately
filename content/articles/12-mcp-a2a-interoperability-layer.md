@@ -9,7 +9,7 @@ people: ["Mike Krieger", "Jim Zemlin", "David Soria Parra", "Justin Spahr-Summer
 companies: ["Anthropic", "Google", "Linux Foundation", "Block", "OpenAI", "Microsoft", "AWS"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-12
 order: 12
 featured: false
 image: ""

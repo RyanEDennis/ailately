@@ -9,7 +9,7 @@ people: ["Hardeep Singh", "Jensen Huang", "Lin Qiao", "Vipul Ved Prakash", "Adam
 companies: ["Gartner", "Nvidia", "Fireworks AI", "Together AI", "Groq", "Cerebras", "OpenServ Labs"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-26
 order: 13
 featured: false
 series: "2026 in Stories"

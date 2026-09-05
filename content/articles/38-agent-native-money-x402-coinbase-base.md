@@ -9,7 +9,7 @@ people: ["Erik Reppel", "Dan Kim", "Jorn Lambert"]
 companies: ["Coinbase", "Cloudflare", "Mastercard", "Stripe", "Circle"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-02
 order: 38
 featured: false
 image: ""

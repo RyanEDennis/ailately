@@ -10,7 +10,7 @@ people: ["Tom Lee", "Logan Xie", "Mark Zalan", "Jorn Lambert"]
 companies: ["Fundstrat", "BitMine Immersion Technologies", "KuCoin", "GoMining", "Mastercard"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-02
 order: 27
 featured: false
 image: ""

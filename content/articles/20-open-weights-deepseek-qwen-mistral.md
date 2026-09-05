@@ -9,7 +9,7 @@ people: ["Liang Wenfeng", "Arthur Mensch", "Yang Zhilin"]
 companies: ["DeepSeek", "Alibaba", "Mistral AI", "Moonshot AI", "ASML"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-01
 order: 20
 featured: false
 image: ""

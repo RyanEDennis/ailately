@@ -9,7 +9,7 @@ people: ["Sam Altman", "Harrison Chase", "Ankush Gola", "Mike Krieger", "Thariq 
 companies: ["OpenAI", "Anthropic", "Google", "Microsoft", "LangChain", "CrewAI", "Mastra"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-01-01
 order: 16
 featured: false
 image: ""

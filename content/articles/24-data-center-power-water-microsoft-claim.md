@@ -9,7 +9,7 @@ people: ["Satya Nadella", "Joseph Dominguez", "Sundar Pichai", "Andy Jassy"]
 companies: ["Microsoft", "Constellation Energy", "Google", "Kairos Power", "Amazon", "Talen Energy", "Tennessee Valley Authority"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-01
 order: 24
 featured: false
 series: "2026 in Stories"

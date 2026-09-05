@@ -9,7 +9,7 @@ people: ["Sam Altman", "Sarah Friar", "Dario Amodei", "Andrew Feldman", "Ali Gho
 companies: ["OpenAI", "Anthropic", "CoreWeave", "Cerebras", "Databricks", "Klarna", "Microsoft"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-01
 order: 25
 featured: false
 series: "2026 in Stories"

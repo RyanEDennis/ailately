@@ -9,7 +9,7 @@ people: ["Jan Leike", "Zico Kolter", "Beth Barnes", "Adam Beaumont", "Jade Leung
 companies: ["OpenAI", "Anthropic", "Google DeepMind", "Hugging Face", "METR", "UK AI Security Institute", "RAND"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-26
 order: 35
 series: "2026 in Stories"
 featured: false

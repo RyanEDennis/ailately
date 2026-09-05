@@ -9,7 +9,7 @@ people: ["Rob Witoff", "Brian Armstrong", "Sriram Krishnan", "Tim Hafner", "Luca
 companies: ["Coinbase", "Andreessen Horowitz", "Bittensor", "OpenServ", "Digital Currency Group", "Tao Synergies"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-01
 order: 39
 featured: false
 image: ""

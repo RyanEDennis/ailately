@@ -9,7 +9,7 @@ people: ["Armağan Amcalar", "Eyup Cinar", "Tim Hafner", "Liam Wright"]
 companies: ["OpenServ Labs", "Coyotiv", "OpenAI"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-01
 order: 14
 featured: true
 image: ""

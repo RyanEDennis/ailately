@@ -9,7 +9,7 @@ people: ["Ruoming Pang", "Mustafa Suleyman", "Karén Simonyan", "David Luan", "P
 companies: ["Meta", "Microsoft", "Inflection AI", "Amazon", "Adept", "Covariant", "Google", "Character.AI", "Windsurf", "Scale AI"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-05-14
 order: 9
 featured: false
 image: ""

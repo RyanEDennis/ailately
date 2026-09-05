@@ -9,7 +9,7 @@ people: ["Jorn Lambert", "Jack Forestell", "Will Gaybrick", "Kevin Miller", "Fid
 companies: ["Mastercard", "Visa", "Stripe", "Google", "PayPal", "OpenAI", "Coinbase"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-06-10
 order: 11
 featured: false
 series: "2026 in Stories"

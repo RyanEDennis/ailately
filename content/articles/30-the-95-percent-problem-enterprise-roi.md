@@ -9,7 +9,7 @@ people: ["Ramesh Raskar", "Aditya Challapally", "Anushree Verma"]
 companies: ["MIT Media Lab", "Gartner", "McKinsey", "Deloitte", "IBM"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-25
 order: 30
 featured: false
 image: ""

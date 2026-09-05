@@ -9,7 +9,7 @@ people: ["Fidji Simo", "John Ternus", "Jony Ive", "Sam Altman"]
 companies: ["OpenAI", "Apple", "Google", "io Products"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-01
 order: 36
 featured: false
 series: "2026 in Stories"

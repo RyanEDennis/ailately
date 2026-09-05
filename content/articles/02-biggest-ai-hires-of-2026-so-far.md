@@ -9,7 +9,7 @@ people: ["Fidji Simo", "Kevin Weil", "Kate Rouch", "Noam Shazeer", "Jeff Dean", 
 companies: ["OpenAI", "Google", "Google DeepMind", "Google Brain", "Anthropic", "Apple", "Discovery Loop", "Character.AI", "Microsoft", "Uber", "Stripe", "STACK Infrastructure", "1X", "xAI", "Meta"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-14
 order: 2
 featured: true
 series: "2026 in Stories"

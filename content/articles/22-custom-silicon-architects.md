@@ -9,7 +9,7 @@ people: ["Amin Vahdat", "Hock Tan", "Sam Altman", "Greg Brockman"]
 companies: ["Google", "Broadcom", "OpenAI", "Amazon", "Meta", "Anthropic", "Microsoft", "TSMC"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-01
 order: 22
 featured: false
 image: ""

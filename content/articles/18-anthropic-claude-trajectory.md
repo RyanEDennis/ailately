@@ -9,7 +9,7 @@ people: ["Jared Kaplan", "Chris Olah", "Jan Leike", "Amanda Askell"]
 companies: ["Anthropic", "Google", "Amazon", "Microsoft", "Nvidia", "Nscale"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-08-17
 order: 18
 featured: false
 image: ""

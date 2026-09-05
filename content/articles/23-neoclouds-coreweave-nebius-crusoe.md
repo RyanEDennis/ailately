@@ -9,7 +9,7 @@ people: ["Michael Intrator", "Nitin Agrawal", "Sachin Jain", "Brian Venturo", "A
 companies: ["CoreWeave", "Nebius", "Nscale", "Anthropic", "OpenAI", "Meta", "Nvidia", "Core Scientific", "Crusoe", "Lambda", "Together AI", "Fluidstack"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-01
 order: 23
 featured: false
 image: ""

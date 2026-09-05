@@ -9,7 +9,7 @@ people: ["Sam Altman", "Jensen Huang", "George Kurtz"]
 companies: ["OpenAI", "Hugging Face", "Nvidia", "CrowdStrike", "Anthropic", "METR"]
 author: AI Lately Desk
 editor: Ryan Elliott Dennis
-date: 2026-09-04
+date: 2026-09-03
 order: 15
 featured: false
 series: "2026 in Stories"
