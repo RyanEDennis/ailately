@@ -45,7 +45,6 @@ export default function PieceView({ piece, related, people, url }: { piece: Piec
                 <Link href={`/series/${slugify(piece.series)}`} className="hover:text-blue">{piece.series}</Link>
               </>
             )}
-            {piece.section === "articles" && piece.order ? ` · No. ${String(piece.order).padStart(2, "0")}` : ""}
           </span>
         </div>
         <h1 className="mt-3 text-[2.1rem] leading-[1.06] font-medium tracking-[-0.015em] sm:text-[2.9rem]" style={{ fontVariationSettings: '"opsz" 72' }} itemProp="headline">

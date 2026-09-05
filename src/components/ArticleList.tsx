@@ -25,11 +25,9 @@ export type ListItem = {
   automated?: boolean;
 };
 
-export function Row({ item, index }: { item: ListItem; index: number }) {
-  const num = String(item.order || index + 1).padStart(2, "0");
+export function Row({ item }: { item: ListItem; index?: number }) {
   return (
-    <li className="row grid gap-x-5 gap-y-2 rule py-5 md:grid-cols-[3.2rem_1fr_11rem]" data-row data-selected="false">
-      <span className="num mono hidden text-[0.85rem] pt-1 md:block" aria-hidden="true">{num}</span>
+    <li className="row grid gap-x-5 gap-y-2 rule py-5 md:grid-cols-[1fr_11rem]" data-row data-selected="false">
       <div>
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <Link href={`/category/${item.category}`} className="kicker hover:text-magenta">{item.categoryLabel}</Link>
