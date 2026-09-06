@@ -33,7 +33,7 @@ export default async function SignalPage() {
           </p>
           <h1 className="mt-2 text-[2rem] leading-tight font-medium tracking-[-0.01em]">The biggest hires of the week, every week</h1>
           <p className="mt-2 text-ink-soft">
-            One question governs every entry: what capability did this company just buy, and what does it imply about the next twelve months? Each move names the person, the destination, the title, the origin, the date, and the public source. Every entry carries a confidence label.
+            Hires, departures, promotions, and founding moves, read as strategy — each with a public source and a confidence label.
           </p>
         </div>
         <dl className="sans grid grid-cols-3 gap-4 self-end text-[0.8rem] lg:grid-cols-1">

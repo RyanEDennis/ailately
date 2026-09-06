@@ -4,6 +4,16 @@ import { getPosts } from "@/lib/content";
 import { formatDate } from "@/lib/slug";
 import { pieceImage } from "@/lib/images";
 import { SITE } from "@/lib/site";
+import { authorForName } from "@/lib/authors";
+
+function Byline({ name }: { name: string }) {
+  const author = authorForName(name);
+  return author ? (
+    <Link href={`/authors/${author.slug}`} className="u-draw hover:text-blue">{name}</Link>
+  ) : (
+    <>{name}</>
+  );
+}
 
 export const metadata: Metadata = {
   title: "Analysis",
@@ -21,9 +31,6 @@ export default async function AnalysisPage() {
       <header className="rule-strong pt-4 pb-6 max-w-[70ch]">
         <p className="kicker kicker--mocha">Analysis</p>
         <h1 className="mt-2 text-[2rem] leading-tight font-medium tracking-[-0.01em]">Bold claims, real numbers</h1>
-        <p className="mt-2 text-ink-soft">
-          A featured essay leads, dated to the day it ran and backed by cited data. Below it stand the house essays by {SITE.editor}, evergreen by design. Each opens with a claim and then earns it with the numbers.
-        </p>
       </header>
 
       {featured && (
@@ -58,9 +65,9 @@ export default async function AnalysisPage() {
             “{featured.epigraph.text}”
           </blockquote>
           <p className="meta mt-4">
-            {featured.byline ?? featured.author}
+            <Byline name={featured.byline ?? featured.author} />
             {featured.role ? `, ${featured.role}` : ""}
-            {featured.editor ? ` · Edited by ${featured.editor}` : ""}
+            {featured.editor ? <> · Edited by <Byline name={featured.editor} /></> : ""}
             <span className="tnum"> · {featured.readingMinutes} min · {featured.sources.length} sources</span>
           </p>
         </article>
@@ -79,7 +86,7 @@ export default async function AnalysisPage() {
               <blockquote className="mt-3 max-w-[60ch] border-l-2 border-mocha pl-3 italic text-[0.95rem] text-ink-soft">“{p.epigraph.text}”</blockquote>
             </div>
             <div className="meta md:text-right md:pt-1">
-              <p>{p.byline ?? p.author}</p>
+              <p><Byline name={p.byline ?? p.author} /></p>
               <p className="tnum">{p.readingMinutes} min · {p.sources.length} sources</p>
             </div>
           </li>

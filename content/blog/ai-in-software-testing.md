@@ -9,7 +9,7 @@ people: []
 companies: ["Meta"]
 author: Kelly Dennis
 byline: "Kelly Dennis"
-role: "Contributor"
+role: "Senior Technical Writer"
 editor: "Ryan Elliott Dennis"
 date: 2026-09-06
 featured: true

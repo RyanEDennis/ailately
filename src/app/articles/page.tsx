@@ -18,7 +18,7 @@ export default async function ArticlesPage() {
         <p className="kicker">Articles</p>
         <h1 className="mt-2 text-[2rem] leading-tight font-medium tracking-[-0.01em]">Every piece, across every category of AI today</h1>
         <p className="mt-2 max-w-[60ch] text-ink-soft">
-          {articles.length} pieces, each one grounded in cited data and organized around the people who made the news. Filter by category, or press <kbd>/</kbd> to search names, companies, and topics.
+          {articles.length} pieces. Filter by category, or press <kbd>/</kbd> to search.
         </p>
       </header>
       <ArticleList items={articles.map(toListItem)} categories={categoryCounts(articles)} />

@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getArticles, getPosts, getWeeks, getRosters, getPeople } from "@/lib/content";
 import { SITE } from "@/lib/site";
+import { AUTHORS } from "@/lib/authors";
 
 export const dynamic = "force-static";
 
@@ -30,5 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     ...rosters.map((r) => ({ url: `${SITE.url}/signal/${r.year}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 })),
     ...[...cats].map((c) => ({ url: `${SITE.url}/category/${c}`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.5 })),
     ...people.map((p) => ({ url: `${SITE.url}/people/${p.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.4 })),
+    ...AUTHORS.map((a) => ({ url: `${SITE.url}/authors/${a.slug}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.5 })),
   ];
 }

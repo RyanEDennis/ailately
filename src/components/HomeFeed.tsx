@@ -158,7 +158,7 @@ function Comic({ p }: { p: ComicPanel }) {
           <h2 className="panel__title" style={{ marginTop: "0.7rem", fontSize: "clamp(1.8rem, 5.2vw, 3.4rem)" }}>
             <Link href={p.href} className="u-draw">{p.title}</Link>
           </h2>
-          <p className="panel__dek">A weekly, kid-friendly strip about growing up alongside AI. Tap the comic to open it full size.</p>
+          <p className="panel__dek">A weekly, kid-friendly strip about growing up alongside AI.</p>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Link href={p.href} className="cta-metal">Open Sunday Funnies <span aria-hidden="true">→</span></Link>
             <span className="meta tnum">New every Sunday</span>

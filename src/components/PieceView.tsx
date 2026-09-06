@@ -4,6 +4,7 @@ import { apCitation } from "@/lib/content";
 import { formatDate, slugify } from "@/lib/slug";
 import { SITE } from "@/lib/site";
 import { pieceImage } from "@/lib/images";
+import { authorForName } from "@/lib/authors";
 import ReadingProgress from "./ReadingProgress";
 import CiteButton from "./CiteButton";
 import CiteHover from "./CiteHover";
@@ -20,13 +21,15 @@ function Epigraph({ text, stat, attribution }: { text: string; stat: string; att
         {idx >= 0 && <mark className="stat-mark">{stat}</mark>}
         {after}”
       </blockquote>
-      <figcaption className="meta mt-3">{attribution ? attribution : "The claim. Everything below it is the evidence."}</figcaption>
+      {attribution ? <figcaption className="meta mt-3">{attribution}</figcaption> : null}
     </figure>
   );
 }
 
 export default function PieceView({ piece, related, people, url }: { piece: Piece; related: Piece[]; people: Person[]; url: string }) {
   const isOpinion = piece.section === "blog";
+  const authorProfile = authorForName(piece.author);
+  const editorProfile = authorForName(piece.editor);
   const citation = apCitation(piece, url);
   const mentioned = people.filter((p) => piece.people.includes(p.name));
   const hero = pieceImage(piece.slug, piece.category);
@@ -55,10 +58,16 @@ export default function PieceView({ piece, related, people, url }: { piece: Piec
         <p className="mt-4 text-[1.15rem] leading-snug text-ink-soft" itemProp="description">{piece.dek}</p>
         <div className="meta mt-5 flex flex-wrap items-center gap-x-4 gap-y-1">
           <span itemProp="author" itemScope itemType="https://schema.org/Person">
-            <span className="text-ink font-medium" itemProp="name">{piece.byline ?? piece.author}</span>
+            {authorProfile ? (
+              <Link href={`/authors/${authorProfile.slug}`} className="text-ink font-medium u-draw" itemProp="name">{piece.byline ?? piece.author}</Link>
+            ) : (
+              <span className="text-ink font-medium" itemProp="name">{piece.byline ?? piece.author}</span>
+            )}
             {piece.role ? `, ${piece.role}` : ""}
           </span>
-          {piece.editor && <span>Edited by {piece.editor}</span>}
+          {piece.editor && (
+            <span>Edited by {editorProfile ? <Link href={`/authors/${editorProfile.slug}`} className="u-draw hover:text-blue">{piece.editor}</Link> : piece.editor}</span>
+          )}
           {piece.date ? (
             <time dateTime={piece.date} itemProp="datePublished" className="tnum">{formatDate(piece.date)}</time>
           ) : (

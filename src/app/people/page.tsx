@@ -21,7 +21,7 @@ export default async function PeoplePage() {
       <header className="rule-strong pt-4 pb-6 max-w-[70ch]">
         <p className="kicker">People</p>
         <h1 className="mt-2 text-[2rem] leading-tight font-medium tracking-[-0.01em]">{people.length} people, lately</h1>
-        <p className="mt-2 text-ink-soft">Every name the desk has covered, with the latest recorded move and the pieces that mention them. Names in articles link here automatically.</p>
+        <p className="mt-2 text-ink-soft">Every name the desk has covered, with the latest recorded move and the pieces that mention them.</p>
         <nav aria-label="Alphabet" className="sans mt-4 flex flex-wrap gap-1 text-[0.8rem]">
           {letters.map((l) => (
             <a key={l} href={`#letter-${l}`} className="rounded px-1.5 py-0.5 text-ink-soft hover:bg-cloud hover:text-blue">{l}</a>

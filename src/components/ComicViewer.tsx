@@ -1,6 +1,7 @@
 "use client";
 
 import { useCallback, useEffect, useState, type CSSProperties } from "react";
+import { createPortal } from "react-dom";
 
 const blob = (extra: CSSProperties): CSSProperties => ({
   position: "absolute",
@@ -30,7 +31,10 @@ export default function ComicViewer({
   className?: string;
 }) {
   const [open, setOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
   const close = useCallback(() => setOpen(false), []);
+
+  useEffect(() => setMounted(true), []);
 
   useEffect(() => {
     if (!open) return;
@@ -56,16 +60,9 @@ export default function ComicViewer({
       >
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img src={image} alt={alt} loading="eager" className="block h-auto w-full" />
-        <span
-          className="pointer-events-none absolute bottom-2.5 right-2.5 rounded-full bg-ink/80 px-3 py-1 text-[0.7rem] font-medium text-white opacity-0 backdrop-blur-sm transition duration-300 group-hover:opacity-100"
-          style={{ fontFamily: "var(--font-sans)" }}
-          aria-hidden="true"
-        >
-          Tap to view full size
-        </span>
       </button>
 
-      {open && (
+      {open && mounted && createPortal(
         <div
           role="dialog"
           aria-modal="true"
@@ -116,7 +113,8 @@ export default function ComicViewer({
               </figcaption>
             )}
           </figure>
-        </div>
+        </div>,
+        document.body,
       )}
     </>
   );

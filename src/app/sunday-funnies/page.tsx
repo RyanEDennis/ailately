@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getComics } from "@/lib/comics";
 import { formatDate } from "@/lib/slug";
 import ComicViewer from "@/components/ComicViewer";
-import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Sunday Funnies",
@@ -22,7 +21,7 @@ export default async function SundayFunniesPage() {
         <p className="kicker kicker--magenta">Sunday Funnies</p>
         <h1 className="mt-2 text-[2rem] leading-tight font-medium tracking-[-0.01em]">Growing up with a robot</h1>
         <p className="mt-2 text-ink-soft">
-          Every Sunday, a small strip about kids and the machines learning beside them — kind, curious, and drawn to make the friendship feel real. Tap any panel to open it full size.
+          Every Sunday, a small strip about kids and the machines learning beside them.
         </p>
       </header>
 
@@ -61,7 +60,7 @@ export default async function SundayFunniesPage() {
       )}
 
       <p className="meta mt-10 max-w-[60ch]">
-        A collaboration in progress at {SITE.name}. New strips land each Sunday.
+        New strips land each Sunday.
       </p>
     </section>
   );
