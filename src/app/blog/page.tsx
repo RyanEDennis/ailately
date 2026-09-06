@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getPosts } from "@/lib/content";
 import { formatDate } from "@/lib/slug";
+import { pieceImage } from "@/lib/images";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -34,6 +35,15 @@ export default async function BlogPage() {
               {featured.date ? ` · ${formatDate(featured.date, { month: "short", day: "numeric", year: "numeric" })}` : ""}
             </span>
           </div>
+          {(() => {
+            const art = pieceImage(featured.slug, featured.category);
+            return art ? (
+              <div className="mt-4 overflow-hidden rounded-lg border border-ink/10 bg-cloud" style={{ aspectRatio: "16 / 9" }}>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src={art.url} alt={art.alt} width={1600} height={900} loading="eager" className="h-full w-full object-cover" />
+              </div>
+            ) : null;
+          })()}
           <h2
             className="mt-3 text-[2.1rem] leading-[1.06] font-medium tracking-[-0.015em] sm:text-[2.6rem]"
             style={{ fontVariationSettings: '"opsz" 60' }}
