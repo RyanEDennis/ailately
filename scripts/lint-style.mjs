@@ -90,7 +90,9 @@ function lintFile(file) {
   for (const key of required) {
     if (fm && !new RegExp(`^${key}:`, "m").test(fm)) errors.push(`frontmatter missing '${key}'`);
   }
-  if (isBlog && fm && /^date:/m.test(fm)) errors.push("blog pieces stay undated: remove 'date'");
+  // Standing blog essays stay undated; a featured guest piece may carry a date.
+  if (isBlog && fm && /^date:/m.test(fm) && !/^featured:\s*true\b/m.test(fm))
+    errors.push("blog pieces stay undated unless featured: remove 'date' or set featured: true");
 
   // Sources section: split body into prose and the sources block.
   const sourcesIdx = body.search(/^##\s+Sources/m);
