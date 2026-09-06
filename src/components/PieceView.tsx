@@ -30,6 +30,8 @@ export default function PieceView({ piece, related, people, url }: { piece: Piec
   const isOpinion = piece.section === "blog";
   const authorProfile = authorForName(piece.author);
   const editorProfile = authorForName(piece.editor);
+  const kickerLabel = isOpinion ? "Analysis" : piece.categoryLabel;
+  const showKind = piece.kindLabel !== kickerLabel;
   const citation = apCitation(piece, url);
   const mentioned = people.filter((p) => piece.people.includes(p.name));
   const hero = pieceImage(piece.slug, piece.category);
@@ -40,17 +42,19 @@ export default function PieceView({ piece, related, people, url }: { piece: Piec
       <header className="max-w-[70ch]">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
           <Link href={isOpinion ? "/analysis" : `/category/${piece.category}`} className={`kicker ${isOpinion ? "kicker--mocha" : ""} hover:text-magenta`}>
-            {isOpinion ? "Analysis" : piece.categoryLabel}
+            {kickerLabel}
           </Link>
-          <span className="meta">
-            {piece.kindLabel}
-            {piece.series && (
-              <>
-                {" · "}
-                <Link href={`/series/${slugify(piece.series)}`} className="hover:text-blue">{piece.series}</Link>
-              </>
-            )}
-          </span>
+          {(showKind || piece.series) && (
+            <span className="meta">
+              {showKind ? piece.kindLabel : ""}
+              {piece.series && (
+                <>
+                  {showKind ? " · " : ""}
+                  <Link href={`/series/${slugify(piece.series)}`} className="hover:text-blue">{piece.series}</Link>
+                </>
+              )}
+            </span>
+          )}
         </div>
         <h1 className="mt-3 text-[2.1rem] leading-[1.06] font-medium tracking-[-0.015em] sm:text-[2.9rem]" style={{ fontVariationSettings: '"opsz" 72' }} itemProp="headline">
           {piece.title}
