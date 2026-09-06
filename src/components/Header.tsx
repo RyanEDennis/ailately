@@ -38,9 +38,9 @@ export default function Header({ latest }: { latest: (Move & { week: string })[]
           <div className="aurora" aria-hidden="true"><i /><i /><i /></div>
           <div className="relative z-[1] flex items-center justify-between gap-4 pt-4 pb-2 meta">
             <span className="tnum">{dateline}</span>
-            <span className="hidden sm:inline">{SITE.edition} · Vol. 1</span>
             <nav aria-label="Utility" className="flex items-center gap-4">
               <Link href="/people" className="hover:text-blue">People</Link>
+              <Link href="/sunday-funnies" className="hover:text-blue">Sunday Funnies</Link>
               <Link href="/blog" className="hover:text-blue">Opinion</Link>
               <Link href="/about" className="hover:text-blue">About</Link>
             </nav>

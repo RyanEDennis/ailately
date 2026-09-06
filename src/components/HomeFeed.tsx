@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
+import ComicViewer from "./ComicViewer";
 
 const accentStyle = (accent: string): CSSProperties => ({ ["--accent"]: accent } as CSSProperties);
 
@@ -31,13 +32,23 @@ export type SignalPanel = {
   moves: { person: string; to: string; title: string; type: string; confidence: string; date: string }[];
 };
 
+export type ComicPanel = {
+  type: "comic";
+  href: string;
+  title: string;
+  image: string;
+  alt: string;
+  caption?: string;
+  dateLabel: string;
+};
+
 export type ExitPanel = {
   type: "exit";
   articlesCount: number;
   thesis: string;
 };
 
-export type Panel = StoryPanel | SignalPanel | ExitPanel;
+export type Panel = StoryPanel | SignalPanel | ComicPanel | ExitPanel;
 
 function StatEpigraph({ text, stat }: { text: string; stat: string }) {
   const idx = stat ? text.indexOf(stat) : -1;
@@ -123,6 +134,38 @@ function Signal({ p }: { p: SignalPanel }) {
         <div className="mt-7 flex flex-wrap items-center gap-3">
           <Link href={p.weekHref} className="cta-metal">Open the feed <span aria-hidden="true">→</span></Link>
           <span className="meta tnum">{p.range}</span>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function Comic({ p }: { p: ComicPanel }) {
+  return (
+    <section className="panel panel--comic" style={accentStyle("#BE3455")} aria-label={`Sunday Funnies — ${p.title}`}>
+      <div className="orb-field" aria-hidden="true">
+        <span className="orb-blob orb-blob--a" />
+        <span className="orb-blob orb-blob--b" />
+        <span className="orb-blob orb-blob--c" />
+      </div>
+      <div className="panel__inner grid items-center gap-7 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.05fr)] lg:gap-10">
+        <div className="order-2 lg:order-1">
+          <p className="panel__eyebrow kicker kicker--magenta">
+            <span className="orbs" aria-hidden="true"><i /><i /><i /></span>
+            Sunday Funnies
+            <span className="meta" style={{ marginLeft: "0.6rem" }}>{p.dateLabel}</span>
+          </p>
+          <h2 className="panel__title" style={{ marginTop: "0.7rem", fontSize: "clamp(1.8rem, 5.2vw, 3.4rem)" }}>
+            <Link href={p.href} className="u-draw">{p.title}</Link>
+          </h2>
+          <p className="panel__dek">A weekly, kid-friendly strip about growing up alongside AI. Tap the comic to open it full size.</p>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Link href={p.href} className="cta-metal">Open Sunday Funnies <span aria-hidden="true">→</span></Link>
+            <span className="meta tnum">New every Sunday</span>
+          </div>
+        </div>
+        <div className="comic-stage order-1 mx-auto w-full max-w-[min(78vw,26rem)] lg:order-2 lg:max-w-none">
+          <ComicViewer image={p.image} alt={p.alt} title={p.title} caption={p.caption} />
         </div>
       </div>
     </section>
@@ -234,6 +277,7 @@ export default function HomeFeed({ panels }: { panels: Panel[] }) {
       {panels.map((p, i) => {
         if (p.type === "story") return <Story key={i} p={p} />;
         if (p.type === "signal") return <Signal key={i} p={p} />;
+        if (p.type === "comic") return <Comic key={i} p={p} />;
         return <Exit key={i} p={p} />;
       })}
 
@@ -243,7 +287,7 @@ export default function HomeFeed({ panels }: { panels: Panel[] }) {
             key={i}
             type="button"
             aria-current={active === i}
-            aria-label={p.type === "story" ? p.title : p.type === "signal" ? "The Signal" : "Keep reading"}
+            aria-label={p.type === "story" ? p.title : p.type === "signal" ? "The Signal" : p.type === "comic" ? "Sunday Funnies" : "Keep reading"}
             onClick={() => jump(i)}
           />
         ))}
