@@ -25,7 +25,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${SITE.url}/terms`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     { url: `${SITE.url}/privacy`, lastModified: now, changeFrequency: "yearly", priority: 0.2 },
     ...articles.map((a) => ({ url: `${SITE.url}/articles/${a.slug}`, lastModified: a.updated ?? a.date ?? SITE.launchDate, changeFrequency: "monthly" as const, priority: a.featured ? 0.95 : 0.8 })),
-    ...posts.map((p) => ({ url: `${SITE.url}/blog/${p.slug}`, lastModified: SITE.launchDate, changeFrequency: "monthly" as const, priority: 0.7 })),
+    ...posts.map((p) => ({ url: `${SITE.url}/blog/${p.slug}`, lastModified: p.updated ?? p.date ?? SITE.launchDate, changeFrequency: "monthly" as const, priority: p.featured ? 0.9 : 0.7 })),
     ...weeks.map((w) => ({ url: `${SITE.url}/signal/${w.week}`, lastModified: w.range.end, changeFrequency: "weekly" as const, priority: 0.7 })),
     ...rosters.map((r) => ({ url: `${SITE.url}/signal/${r.year}`, lastModified: now, changeFrequency: "monthly" as const, priority: 0.8 })),
     ...[...cats].map((c) => ({ url: `${SITE.url}/category/${c}`, lastModified: now, changeFrequency: "weekly" as const, priority: 0.5 })),
