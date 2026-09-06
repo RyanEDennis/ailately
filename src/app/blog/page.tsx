@@ -1,27 +1,63 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getPosts } from "@/lib/content";
+import { formatDate } from "@/lib/slug";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Opinion",
-  description: `Bold, evidence-backed opinion from ${SITE.editor}, founder and editor of AI Lately: reasoning as the next cost breakthrough, people as the product, the agent economy's bank, inference as the new oil, and the end of the résumé monopoly.`,
+  description: `Opinion and analysis from AI Lately: a featured guest essay plus standing essays by ${SITE.editor}, founder and editor — reasoning as the next cost breakthrough, people as the product, the agent economy's bank, inference as the new oil, and the end of the résumé monopoly.`,
   alternates: { canonical: "/blog" },
 };
 
 export default async function BlogPage() {
   const posts = await getPosts();
+  const featured = posts.find((p) => p.featured);
+  const rest = posts.filter((p) => !featured || p.slug !== featured.slug);
+
   return (
     <section className="pt-8">
       <header className="rule-strong pt-4 pb-6 max-w-[70ch]">
         <p className="kicker kicker--mocha">Opinion</p>
         <h1 className="mt-2 text-[2rem] leading-tight font-medium tracking-[-0.01em]">Bold claims, real numbers</h1>
         <p className="mt-2 text-ink-soft">
-          Five standing essays by {SITE.editor}, undated by design. Each opens with a hyperbolic claim and then earns it with cited data. The house bias is on the record: bounded reasoning is the next big breakthrough in cost and productivity.
+          A featured essay leads, dated to the day it ran and backed by cited data. Below it stand the house essays by {SITE.editor}, evergreen by design. Each opens with a claim and then earns it with the numbers.
         </p>
       </header>
+
+      {featured && (
+        <article className="rule pt-6 pb-8 max-w-[74ch]" data-featured>
+          <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+            <p className="kicker kicker--magenta">Featured</p>
+            <span className="meta">
+              {featured.categoryLabel} · {featured.kindLabel}
+              {featured.date ? ` · ${formatDate(featured.date, { month: "short", day: "numeric", year: "numeric" })}` : ""}
+            </span>
+          </div>
+          <h2
+            className="mt-3 text-[2.1rem] leading-[1.06] font-medium tracking-[-0.015em] sm:text-[2.6rem]"
+            style={{ fontVariationSettings: '"opsz" 60' }}
+          >
+            <Link href={`/blog/${featured.slug}`} data-primary className="u-draw">{featured.title}</Link>
+          </h2>
+          <p className="mt-3 max-w-[64ch] text-[1.12rem] leading-snug text-ink-soft">{featured.dek}</p>
+          <blockquote
+            className="mt-4 max-w-[60ch] border-l-2 border-mocha pl-3 italic text-[1.02rem] leading-snug text-ink-soft"
+            style={{ fontFamily: "var(--font-display)", fontOpticalSizing: "auto" }}
+          >
+            “{featured.epigraph.text}”
+          </blockquote>
+          <p className="meta mt-4">
+            {featured.byline ?? featured.author}
+            {featured.role ? `, ${featured.role}` : ""}
+            {featured.editor ? ` · Edited by ${featured.editor}` : ""}
+            <span className="tnum"> · {featured.readingMinutes} min · {featured.sources.length} sources</span>
+          </p>
+        </article>
+      )}
+
       <ol className="reveal list-none p-0 m-0">
-        {posts.map((p, i) => (
+        {rest.map((p, i) => (
           <li key={p.slug} className="row grid gap-x-5 gap-y-2 rule py-6 md:grid-cols-[3.2rem_1fr_11rem]" data-row data-selected="false">
             <span className="num mono hidden text-[0.85rem] pt-1 md:block" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
             <div>
