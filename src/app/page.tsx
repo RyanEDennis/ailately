@@ -1,4 +1,4 @@
-import { getArticles, getWeeks } from "@/lib/content";
+import { getArticles, getPosts, getWeeks } from "@/lib/content";
 import type { Piece } from "@/lib/content";
 import HomeFeed, { type Panel } from "@/components/HomeFeed";
 import { formatRange, formatDate } from "@/lib/slug";
@@ -38,10 +38,11 @@ function badgeFor(p: Piece): string | undefined {
 }
 
 function storyPanel(p: Piece, opts: { lead?: boolean; epigraph?: boolean } = {}): Panel {
+  const isBlog = p.section === "blog";
   return {
     type: "story",
-    href: `/articles/${p.slug}`,
-    kicker: p.categoryLabel,
+    href: isBlog ? `/blog/${p.slug}` : `/articles/${p.slug}`,
+    kicker: isBlog ? "Opinion" : p.categoryLabel,
     kindLabel: p.kindLabel,
     title: p.title,
     dek: p.dek,
@@ -57,9 +58,14 @@ function storyPanel(p: Piece, opts: { lead?: boolean; epigraph?: boolean } = {})
 
 export default async function Home() {
   const articles = await getArticles();
+  const posts = await getPosts();
   const weeks = await getWeeks();
 
+  // A featured Opinion essay (e.g. Kelly Dennis's) leads the homepage when one
+  // exists; otherwise the lead falls back to the marquee article.
+  const leadPost = posts.find((p) => p.featured);
   const lead =
+    leadPost ??
     articles.find((a) => a.slug === "biggest-ai-hires-of-2026-so-far") ??
     articles.find((a) => a.featured) ??
     articles[0];

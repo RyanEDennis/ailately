@@ -339,12 +339,11 @@ kbd { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.1rem 0.4rem;
 @media (max-width: 640px) { .statuspill { display: none; } .glassbar__nav { font-size: 0.8rem; gap: 14px; } .glassbar__word { font-size: 1.1rem; } }
 
 /* ------------------------------------------------------------------
-   Home feed — a vertical, full-viewport, snap-scrolling story feed.
-   Snap turns on only on the homepage (html.home), so article pages
-   with anchor navigation stay untouched.
+   Home feed — a vertical, full-viewport story feed. Panels fill the
+   screen and scroll freely: the masthead at the very top stays a
+   restable position, so the reader can sit there and read it.
    ------------------------------------------------------------------ */
-html.home { scroll-snap-type: y proximity; }
-@media (prefers-reduced-motion: reduce) { html.home { scroll-snap-type: none; } }
+html.home { scroll-snap-type: none; }
 
 .home-feed {
   margin-left: calc(50% - 50vw);
@@ -359,7 +358,6 @@ html.home { scroll-snap-type: y proximity; }
   min-height: 100svh;
   display: grid;
   place-items: center;
-  scroll-snap-align: start;
   padding: clamp(4rem, 9vh, 7rem) 0 clamp(3rem, 7vh, 5rem);
   overflow: hidden;
   isolation: isolate;
