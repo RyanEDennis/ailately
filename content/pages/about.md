@@ -7,7 +7,9 @@ AI Lately covers artificial intelligence through the people who build it. Every 
 
 ## Masthead
 
-**Ryan Elliott Dennis**, Founder and Editor. He writes the opinion column, sets the editorial standards, and signs every correction. Reach the desk at editor@ailately.com.
+**[Ryan Elliott Dennis](/authors/ryan-elliott-dennis)**, Founder and Editor. He writes the opinion column, sets the editorial standards, and signs every correction. Reach the desk at editor@ailately.com.
+
+**[Kelly Dennis](/authors/kelly-dennis)**, Senior Technical Writer. She covers software quality and the craft of testing, including the way AI is reshaping the tester's role.
 
 **AI Lately Desk** is the byline on reported analysis. Pieces under that byline draw on public filings, company announcements, and reporting from publications of record, and each one lists its sources in AP style.
 
