@@ -315,7 +315,7 @@ async function loadPiece(section: Section, dir: string, file: string): Promise<P
     editor: data.editor ? String(data.editor) : undefined,
     byline: data.byline ? String(data.byline) : undefined,
     role: data.role ? String(data.role) : undefined,
-    date: section === "blog" ? undefined : date,
+    date,
     updated,
     order: Number(data.order ?? orderFromFile ?? 0),
     featured: Boolean(data.featured),
@@ -421,7 +421,15 @@ export async function getArticles(): Promise<Piece[]> {
 
 export async function getPosts(): Promise<Piece[]> {
   const { pieces } = await loadAll();
-  return pieces.filter((p) => p.section === "blog").sort((a, b) => a.title.localeCompare(b.title));
+  return pieces
+    .filter((p) => p.section === "blog")
+    .sort((a, b) => {
+      // Featured pieces lead; among dated pieces the newest runs first; the
+      // undated standing essays fall back to alphabetical order.
+      if (a.featured !== b.featured) return a.featured ? -1 : 1;
+      if ((a.date ?? "") !== (b.date ?? "")) return (a.date ?? "") < (b.date ?? "") ? 1 : -1;
+      return a.title.localeCompare(b.title);
+    });
 }
 
 export async function getPiece(section: Section, slug: string): Promise<Piece | undefined> {
