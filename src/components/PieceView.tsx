@@ -14,7 +14,7 @@ function Epigraph({ text, stat, attribution }: { text: string; stat: string; att
   const after = idx >= 0 ? text.slice(idx + stat.length) : "";
   return (
     <figure className="mt-8 max-w-[60ch]">
-      <blockquote className="text-[1.45rem] leading-[1.3] italic tracking-[-0.005em] sm:text-[1.65rem]" style={{ fontVariationSettings: '"opsz" 40' }}>
+      <blockquote className="text-[1.45rem] leading-[1.3] italic tracking-[-0.005em] sm:text-[1.7rem]" style={{ fontFamily: "var(--font-display)", fontOpticalSizing: "auto" }}>
         “{before}
         {idx >= 0 && <mark className="stat-mark">{stat}</mark>}
         {after}”
