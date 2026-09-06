@@ -115,9 +115,8 @@ export default async function AuthorPage({ params }: { params: Promise<Params> }
         </section>
 
         <aside aria-label={`${author.name} on X`}>
-          <div className="rule-strong flex items-baseline justify-between pt-4 pb-3">
+          <div className="rule-strong pt-4 pb-3">
             <h2 className="kicker">On X</h2>
-            <a href={`https://x.com/${author.x}`} target="_blank" rel="noopener" className="meta hover:text-blue">@{author.x} <span aria-hidden="true">↗</span></a>
           </div>
           <div className="pt-4">
             <XFeed handle={author.x} />

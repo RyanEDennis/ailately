@@ -1,59 +1,24 @@
-"use client";
+// A first-party, link-only card pointing to the author's X profile.
+// No third-party scripts, iframes, or network calls — the card is a link.
 
-import { useEffect, useRef } from "react";
-
-declare global {
-  interface Window {
-    twttr?: { widgets?: { load: (el?: HTMLElement | null) => void } };
-  }
-}
-
-const WIDGET_SRC = "https://platform.twitter.com/widgets.js";
-
-/**
- * A compact, scrollable window of an author's recent X posts, rendered with X's
- * official timeline widget. The inner anchor is a real link, so a reader still
- * reaches the profile when the widget is blocked or offline.
- */
-export default function XFeed({ handle, height = 520 }: { handle: string; height?: number }) {
-  const ref = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const render = () => window.twttr?.widgets?.load(ref.current);
-    const existing = document.querySelector<HTMLScriptElement>(`script[src="${WIDGET_SRC}"]`);
-    if (existing) {
-      render();
-      return;
-    }
-    const script = document.createElement("script");
-    script.src = WIDGET_SRC;
-    script.async = true;
-    script.addEventListener("load", render);
-    document.body.appendChild(script);
-  }, [handle]);
-
+export default function XFeed({ handle }: { handle: string }) {
   return (
-    <div className="x-window" style={{ maxHeight: height }}>
-      <div ref={ref} className="x-window__scroll">
-        <a
-          className="twitter-timeline"
-          data-height={height}
-          data-theme="light"
-          data-chrome="noheader nofooter noborders transparent"
-          data-dnt="true"
-          href={`https://twitter.com/${handle}?ref_src=twsrc%5Etfw`}
-        >
-          Recent posts from @{handle}
-        </a>
-      </div>
-      <a
-        href={`https://x.com/${handle}`}
-        target="_blank"
-        rel="noopener"
-        className="x-window__fallback sans"
-      >
-        Open @{handle} on X <span aria-hidden="true">↗</span>
-      </a>
-    </div>
+    <a
+      href={`https://x.com/${handle}`}
+      target="_blank"
+      rel="noopener"
+      className="x-card sans"
+      aria-label={`Open @${handle} on X`}
+    >
+      <span className="x-card__mark" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+          <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24h-6.66l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117L17.083 19.77z" />
+        </svg>
+      </span>
+      <span className="x-card__body">
+        <span className="x-card__handle">@{handle}</span>
+        <span className="x-card__cta">Read the latest on X <span aria-hidden="true">↗</span></span>
+      </span>
+    </a>
   );
 }
