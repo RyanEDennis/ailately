@@ -8,13 +8,19 @@ export function pieceJsonLd(piece: Piece, url: string) {
     : { "@type": "Organization", name: piece.author, url: SITE.url };
   return {
     "@context": "https://schema.org",
-    "@type": isOpinion ? "OpinionNewsArticle" : piece.kind === "feature" ? "AnalysisNewsArticle" : "NewsArticle",
+    "@type": isOpinion
+      ? piece.kind === "opinion"
+        ? "OpinionNewsArticle"
+        : "AnalysisNewsArticle"
+      : piece.kind === "feature"
+        ? "AnalysisNewsArticle"
+        : "NewsArticle",
     "@id": url,
     mainEntityOfPage: { "@type": "WebPage", "@id": url },
     headline: piece.title,
     alternativeHeadline: piece.dek,
     description: piece.seo.description ?? piece.dek,
-    articleSection: isOpinion ? "Opinion" : piece.categoryLabel,
+    articleSection: isOpinion ? "Analysis" : piece.categoryLabel,
     keywords: (piece.seo.keywords ?? []).concat(piece.tags).join(", "),
     wordCount: piece.wordCount,
     inLanguage: "en-US",

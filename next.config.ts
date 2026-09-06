@@ -5,6 +5,12 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   trailingSlash: false,
   images: { formats: ["image/avif", "image/webp"] },
+  async redirects() {
+    return [
+      { source: "/blog", destination: "/analysis", permanent: true },
+      { source: "/blog/:slug", destination: "/analysis/:slug", permanent: true },
+    ];
+  },
   async headers() {
     return [
       {

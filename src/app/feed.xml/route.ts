@@ -17,8 +17,8 @@ export async function GET() {
     items.push(`<item><title>${esc(a.title)}</title><link>${url}</link><guid isPermaLink="true">${url}</guid>${a.date ? `<pubDate>${new Date(`${a.date}T12:00:00Z`).toUTCString()}</pubDate>` : ""}<category>${esc(a.categoryLabel)}</category><description>${esc(a.dek)}</description><author>${esc(SITE.contact)} (${esc(a.author)})</author></item>`);
   }
   for (const p of posts) {
-    const url = `${SITE.url}/blog/${p.slug}`;
-    items.push(`<item><title>${esc(`Opinion: ${p.title}`)}</title><link>${url}</link><guid isPermaLink="true">${url}</guid><category>Opinion</category><description>${esc(p.dek)}</description><author>${esc(SITE.contact)} (${esc(p.author)})</author></item>`);
+    const url = `${SITE.url}/analysis/${p.slug}`;
+    items.push(`<item><title>${esc(`${p.kindLabel}: ${p.title}`)}</title><link>${url}</link><guid isPermaLink="true">${url}</guid><category>${esc(p.kindLabel)}</category><description>${esc(p.dek)}</description><author>${esc(SITE.contact)} (${esc(p.author)})</author></item>`);
   }
   for (const w of weeks) {
     const url = `${SITE.url}/signal/${w.week}`;

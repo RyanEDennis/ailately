@@ -42,9 +42,9 @@ function storyPanel(p: Piece, opts: { lead?: boolean; epigraph?: boolean } = {})
   const isBlog = p.section === "blog";
   return {
     type: "story",
-    href: isBlog ? `/blog/${p.slug}` : `/articles/${p.slug}`,
-    kicker: isBlog ? "Opinion" : p.categoryLabel,
-    kindLabel: p.kindLabel,
+    href: isBlog ? `/analysis/${p.slug}` : `/articles/${p.slug}`,
+    kicker: isBlog ? p.kindLabel : p.categoryLabel,
+    kindLabel: isBlog ? undefined : p.kindLabel,
     title: p.title,
     dek: p.dek,
     accent: accentFor(p),
@@ -62,8 +62,8 @@ export default async function Home() {
   const posts = await getPosts();
   const weeks = await getWeeks();
 
-  // A featured Opinion essay (e.g. Kelly Dennis's) leads the homepage when one
-  // exists; otherwise the lead falls back to the marquee article.
+  // A featured Analysis-section essay (e.g. Kelly Dennis's) leads the homepage
+  // when one exists; otherwise the lead falls back to the marquee article.
   const leadPost = posts.find((p) => p.featured);
   const lead =
     leadPost ??

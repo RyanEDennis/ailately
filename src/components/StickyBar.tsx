@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 const NAV = [
   { href: "/articles", label: "Articles", match: (p: string) => p === "/" || p.startsWith("/articles") || p.startsWith("/category") || p.startsWith("/series") },
   { href: "/signal", label: "The Signal", match: (p: string) => p.startsWith("/signal") },
-  { href: "/blog", label: "Opinion", match: (p: string) => p.startsWith("/blog") },
+  { href: "/analysis", label: "Analysis", match: (p: string) => p.startsWith("/analysis") },
   { href: "/people", label: "People", match: (p: string) => p.startsWith("/people") },
 ];
 

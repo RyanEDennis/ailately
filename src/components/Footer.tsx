@@ -19,7 +19,7 @@ export default function Footer() {
           <ul className="space-y-2">
             <li><Link href="/articles" className="hover:text-blue">Articles</Link></li>
             <li><Link href="/signal" className="hover:text-blue">The Signal</Link></li>
-            <li><Link href="/blog" className="hover:text-blue">Opinion</Link></li>
+            <li><Link href="/analysis" className="hover:text-blue">Analysis</Link></li>
             <li><Link href="/people" className="hover:text-blue">People</Link></li>
           </ul>
         </nav>

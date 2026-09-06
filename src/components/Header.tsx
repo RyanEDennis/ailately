@@ -41,7 +41,7 @@ export default function Header({ latest }: { latest: (Move & { week: string })[]
             <nav aria-label="Utility" className="flex items-center gap-4">
               <Link href="/people" className="hover:text-blue">People</Link>
               <Link href="/sunday-funnies" className="hover:text-blue">Sunday Funnies</Link>
-              <Link href="/blog" className="hover:text-blue">Opinion</Link>
+              <Link href="/analysis" className="hover:text-blue">Analysis</Link>
               <Link href="/about" className="hover:text-blue">About</Link>
             </nav>
           </div>

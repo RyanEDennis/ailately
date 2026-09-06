@@ -6,12 +6,12 @@ import { pieceImage } from "@/lib/images";
 import { SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Opinion",
-  description: `Opinion and analysis from AI Lately: a featured guest essay plus standing essays by ${SITE.editor}, founder and editor — reasoning as the next cost breakthrough, people as the product, the agent economy's bank, inference as the new oil, and the end of the résumé monopoly.`,
-  alternates: { canonical: "/blog" },
+  title: "Analysis",
+  description: `Analysis and opinion from AI Lately: a featured guest essay plus standing essays by ${SITE.editor}, founder and editor — reasoning as the next cost breakthrough, people as the product, the agent economy's bank, inference as the new oil, and the end of the résumé monopoly.`,
+  alternates: { canonical: "/analysis" },
 };
 
-export default async function BlogPage() {
+export default async function AnalysisPage() {
   const posts = await getPosts();
   const featured = posts.find((p) => p.featured);
   const rest = posts.filter((p) => !featured || p.slug !== featured.slug);
@@ -19,7 +19,7 @@ export default async function BlogPage() {
   return (
     <section className="pt-8">
       <header className="rule-strong pt-4 pb-6 max-w-[70ch]">
-        <p className="kicker kicker--mocha">Opinion</p>
+        <p className="kicker kicker--mocha">Analysis</p>
         <h1 className="mt-2 text-[2rem] leading-tight font-medium tracking-[-0.01em]">Bold claims, real numbers</h1>
         <p className="mt-2 text-ink-soft">
           A featured essay leads, dated to the day it ran and backed by cited data. Below it stand the house essays by {SITE.editor}, evergreen by design. Each opens with a claim and then earns it with the numbers.
@@ -48,7 +48,7 @@ export default async function BlogPage() {
             className="mt-3 text-[2.1rem] leading-[1.06] font-medium tracking-[-0.015em] sm:text-[2.6rem]"
             style={{ fontVariationSettings: '"opsz" 60' }}
           >
-            <Link href={`/blog/${featured.slug}`} data-primary className="u-draw">{featured.title}</Link>
+            <Link href={`/analysis/${featured.slug}`} data-primary className="u-draw">{featured.title}</Link>
           </h2>
           <p className="mt-3 max-w-[64ch] text-[1.12rem] leading-snug text-ink-soft">{featured.dek}</p>
           <blockquote
@@ -73,7 +73,7 @@ export default async function BlogPage() {
             <div>
               <p className="kicker kicker--mocha">{p.categoryLabel}</p>
               <h2 className="mt-1.5 text-[1.6rem] leading-[1.15] font-medium tracking-[-0.008em]" style={{ fontVariationSettings: '"opsz" 40' }}>
-                <Link href={`/blog/${p.slug}`} data-primary className="u-draw">{p.title}</Link>
+                <Link href={`/analysis/${p.slug}`} data-primary className="u-draw">{p.title}</Link>
               </h2>
               <p className="mt-2 max-w-[62ch] text-[0.98rem] leading-snug text-ink-soft">{p.dek}</p>
               <blockquote className="mt-3 max-w-[60ch] border-l-2 border-mocha pl-3 italic text-[0.95rem] text-ink-soft">“{p.epigraph.text}”</blockquote>

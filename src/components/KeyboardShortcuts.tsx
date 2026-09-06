@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
 
-const GO: Record<string, string> = { a: "/", s: "/signal", b: "/blog", p: "/people", h: "/" };
+const GO: Record<string, string> = { a: "/", s: "/signal", b: "/analysis", p: "/people", h: "/" };
 
 export default function KeyboardShortcuts() {
   const router = useRouter();
@@ -91,7 +91,7 @@ export default function KeyboardShortcuts() {
           <dt><kbd>/</kbd></dt><dd>Search the list</dd>
           <dt><kbd>g</kbd> then <kbd>a</kbd></dt><dd>Articles</dd>
           <dt><kbd>g</kbd> then <kbd>s</kbd></dt><dd>The Signal</dd>
-          <dt><kbd>g</kbd> then <kbd>b</kbd></dt><dd>Opinion</dd>
+          <dt><kbd>g</kbd> then <kbd>b</kbd></dt><dd>Analysis</dd>
           <dt><kbd>g</kbd> then <kbd>p</kbd></dt><dd>People</dd>
           <dt><kbd>?</kbd></dt><dd>This sheet</dd>
           <dt><kbd>Esc</kbd></dt><dd>Close</dd>

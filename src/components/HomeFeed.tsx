@@ -176,7 +176,7 @@ function Exit({ p }: { p: ExitPanel }) {
   const links = [
     { href: "/articles", label: "Articles", note: `All ${p.articlesCount} pieces` },
     { href: "/signal", label: "The Signal", note: "The weekly feed of the biggest AI hires" },
-    { href: "/blog", label: "Opinion", note: "The column from Ryan Elliott Dennis" },
+    { href: "/analysis", label: "Analysis", note: "Featured essays and the house column" },
     { href: "/people", label: "People", note: "Everyone the record follows" },
   ];
   return (

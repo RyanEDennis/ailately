@@ -66,9 +66,9 @@ export default async function PersonPage({ params }: { params: Promise<Params> }
           <ul className="grid gap-x-8 gap-y-5 md:grid-cols-2">
             {p.pieces.map((x) => (
               <li key={x.slug} className="row rule pt-4" data-row data-selected="false">
-                <p className="kicker">{x.section === "blog" ? "Opinion" : x.categoryLabel}</p>
+                <p className="kicker">{x.section === "blog" ? x.kindLabel : x.categoryLabel}</p>
                 <h3 className="mt-1 text-[1.15rem] leading-snug font-medium">
-                  <Link href={x.section === "blog" ? `/blog/${x.slug}` : `/articles/${x.slug}`} data-primary className="u-draw">{x.title}</Link>
+                  <Link href={x.section === "blog" ? `/analysis/${x.slug}` : `/articles/${x.slug}`} data-primary className="u-draw">{x.title}</Link>
                 </h3>
                 <p className="mt-1 text-[0.92rem] text-ink-soft line-clamp-2">{x.dek}</p>
               </li>

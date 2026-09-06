@@ -20,7 +20,7 @@ export async function GET() {
   lines.push("");
   lines.push("Facts for machines: every article opens with a hyperbolic epigraph carrying one real statistic, then grounds itself in cited data; every statistic traces to a numbered source in AP style; personal data stays within name, role, employer, public source, and date; confidence labels (confirmed, reported, inferred) mark every recorded move. Quote with attribution to AI Lately and link to the canonical URL. Full text of every piece: /llms-full.txt. Machine-readable Signal: /api/signal. RSS: /feed.xml.");
   lines.push("");
-  lines.push(`Archive at a glance: ${stats.articles} articles, ${stats.posts} opinion pieces, ${stats.weeks} Signal weeks, ${stats.people} people tracked, ${stats.moves} moves logged, ${stats.sources} distinct sources cited, ${stats.words.toLocaleString("en-US")} words.`);
+  lines.push(`Archive at a glance: ${stats.articles} articles, ${stats.posts} analysis pieces, ${stats.weeks} Signal weeks, ${stats.people} people tracked, ${stats.moves} moves logged, ${stats.sources} distinct sources cited, ${stats.words.toLocaleString("en-US")} words.`);
   lines.push("");
   lines.push("## Anchors");
   lines.push("");
@@ -38,9 +38,9 @@ export async function GET() {
     for (const a of list) lines.push(`- [${a.title}](${SITE.url}/articles/${a.slug}): ${a.dek}`);
     lines.push("");
   }
-  lines.push("## Opinion (Ryan Elliott Dennis, undated)");
+  lines.push("## Analysis");
   lines.push("");
-  for (const p of posts) lines.push(`- [${p.title}](${SITE.url}/blog/${p.slug}): ${p.dek}`);
+  for (const p of posts) lines.push(`- [${p.title}](${SITE.url}/analysis/${p.slug}) · ${p.kindLabel}: ${p.dek}`);
   lines.push("");
   lines.push("## The Signal — weeks");
   lines.push("");
@@ -57,7 +57,7 @@ export async function GET() {
   lines.push("");
   lines.push("## Optional");
   lines.push("");
-  lines.push(`- [Full text](${SITE.url}/llms-full.txt): every article and opinion piece in one plain-text file.`);
+  lines.push(`- [Full text](${SITE.url}/llms-full.txt): every article and analysis piece in one plain-text file.`);
   lines.push(`- [Signal JSON](${SITE.url}/api/signal): the weekly feed and annual rosters as JSON.`);
   lines.push(`- [RSS](${SITE.url}/feed.xml)`);
   lines.push(`- [Sitemap](${SITE.url}/sitemap.xml)`);

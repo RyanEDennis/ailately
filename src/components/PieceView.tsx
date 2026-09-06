@@ -36,8 +36,8 @@ export default function PieceView({ piece, related, people, url }: { piece: Piec
       <CiteHover sources={piece.sources} />
       <header className="max-w-[70ch]">
         <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <Link href={isOpinion ? "/blog" : `/category/${piece.category}`} className={`kicker ${isOpinion ? "kicker--mocha" : ""} hover:text-magenta`}>
-            {isOpinion ? "Opinion" : piece.categoryLabel}
+          <Link href={isOpinion ? "/analysis" : `/category/${piece.category}`} className={`kicker ${isOpinion ? "kicker--mocha" : ""} hover:text-magenta`}>
+            {isOpinion ? "Analysis" : piece.categoryLabel}
           </Link>
           <span className="meta">
             {piece.kindLabel}
@@ -132,14 +132,14 @@ export default function PieceView({ piece, related, people, url }: { piece: Piec
         <section className="mt-16">
           <div className="flex items-baseline justify-between rule-strong pt-4 pb-3">
             <h2 className="kicker">Related, lately</h2>
-            <Link href={isOpinion ? "/blog" : "/articles"} className="meta hover:text-blue">More →</Link>
+            <Link href={isOpinion ? "/analysis" : "/articles"} className="meta hover:text-blue">More →</Link>
           </div>
           <ul className="grid gap-x-8 gap-y-6 md:grid-cols-2">
             {related.map((r) => (
               <li key={r.slug} className="row rule pt-4" data-row data-selected="false">
-                <p className="kicker">{r.section === "blog" ? "Opinion" : r.categoryLabel}</p>
+                <p className="kicker">{r.section === "blog" ? r.kindLabel : r.categoryLabel}</p>
                 <h3 className="mt-1 text-[1.15rem] leading-snug font-medium">
-                  <Link href={r.section === "blog" ? `/blog/${r.slug}` : `/articles/${r.slug}`} data-primary className="u-draw">{r.title}</Link>
+                  <Link href={r.section === "blog" ? `/analysis/${r.slug}` : `/articles/${r.slug}`} data-primary className="u-draw">{r.title}</Link>
                 </h3>
                 <p className="meta mt-1 tnum">{r.readingMinutes} min · {r.sources.length} sources</p>
               </li>

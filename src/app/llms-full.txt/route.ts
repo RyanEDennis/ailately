@@ -40,9 +40,10 @@ export async function GET() {
     out.push("");
     out.push(`# ${p.title}`);
     out.push("");
-    out.push(`URL: ${SITE.url}/blog/${p.slug}`);
-    out.push(`Section: Opinion · ${p.categoryLabel} · undated`);
+    out.push(`URL: ${SITE.url}/analysis/${p.slug}`);
+    out.push(`Section: Analysis · ${p.categoryLabel} · ${p.kindLabel}`);
     out.push(`Byline: ${p.byline ?? p.author}${p.role ? `, ${p.role}` : ""}`);
+    if (p.date) out.push(`Published: ${p.date}`);
     out.push(`Dek: ${p.dek}`);
     out.push(`Epigraph: "${p.epigraph.text}" (statistic: ${p.epigraph.stat})`);
     out.push("");

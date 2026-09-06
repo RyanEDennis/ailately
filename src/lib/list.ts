@@ -5,7 +5,7 @@ import { CATEGORIES } from "./site";
 
 export function toListItem(p: Piece): ListItem {
   return {
-    href: p.section === "blog" ? `/blog/${p.slug}` : `/articles/${p.slug}`,
+    href: p.section === "blog" ? `/analysis/${p.slug}` : `/articles/${p.slug}`,
     slug: p.slug,
     title: p.title,
     dek: p.dek,
