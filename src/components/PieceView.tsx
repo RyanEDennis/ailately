@@ -3,6 +3,7 @@ import type { Piece, Person } from "@/lib/content";
 import { apCitation } from "@/lib/content";
 import { formatDate, slugify } from "@/lib/slug";
 import { SITE } from "@/lib/site";
+import { pieceImage } from "@/lib/images";
 import ReadingProgress from "./ReadingProgress";
 import CiteButton from "./CiteButton";
 import CiteHover from "./CiteHover";
@@ -28,6 +29,7 @@ export default function PieceView({ piece, related, people, url }: { piece: Piec
   const isOpinion = piece.section === "blog";
   const citation = apCitation(piece, url);
   const mentioned = people.filter((p) => piece.people.includes(p.name));
+  const hero = pieceImage(piece.slug, piece.category);
   return (
     <article className="pt-8" itemScope itemType="https://schema.org/NewsArticle">
       <ReadingProgress />
@@ -64,6 +66,17 @@ export default function PieceView({ piece, related, people, url }: { piece: Piec
           )}
           <span className="tnum">{piece.readingMinutes} min read · {piece.wordCount.toLocaleString("en-US")} words · {piece.sources.length} sources</span>
         </div>
+        {hero && (
+          <figure className="mt-6">
+            <div className="overflow-hidden rounded-lg border border-ink/10 bg-cloud" style={{ aspectRatio: "16 / 9" }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={hero.url} alt={hero.alt} width={1600} height={900} loading="eager" className="h-full w-full object-cover" />
+            </div>
+            <figcaption className="meta mt-2">
+              {hero.alt}. <a href={hero.source} target="_blank" rel="noopener" className="hover:text-blue">Photo · Pexels</a>
+            </figcaption>
+          </figure>
+        )}
         {piece.automated && (
           <p className="sans mt-4 max-w-[60ch] rounded-md border border-ink/15 bg-cloud px-4 py-3 text-[0.82rem] leading-snug text-ink-soft">
             Automated report. This piece was drafted by the AI Lately newsdesk pipeline from public filings and company announcements, checked by the house style linter, and published under the editor's standing rules. Corrections: <a href={`mailto:${SITE.corrections}`} className="text-blue">{SITE.corrections}</a>.
