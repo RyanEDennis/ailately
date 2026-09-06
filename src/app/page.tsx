@@ -2,6 +2,7 @@ import { getArticles, getPosts, getWeeks } from "@/lib/content";
 import type { Piece } from "@/lib/content";
 import HomeFeed, { type Panel } from "@/components/HomeFeed";
 import { formatRange, formatDate } from "@/lib/slug";
+import { latestComic } from "@/lib/comics";
 import { SITE } from "@/lib/site";
 
 const ACCENT: Record<string, string> = {
@@ -76,6 +77,22 @@ export default async function Home() {
 
   const panels: Panel[] = [];
   panels.push(storyPanel(lead, { lead: true, epigraph: true }));
+
+  // Sunday Funnies runs directly beneath the lead essay so it is the first
+  // thing readers meet after the day's headline piece.
+  const comic = latestComic();
+  if (comic) {
+    panels.push({
+      type: "comic",
+      href: `/sunday-funnies/${comic.slug}`,
+      title: comic.title,
+      image: comic.image,
+      alt: comic.alt,
+      caption: comic.caption,
+      dateLabel: formatDate(comic.date, { month: "short", day: "numeric", year: "numeric" }),
+    });
+  }
+
   if (week) {
     panels.push({
       type: "signal",
