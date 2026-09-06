@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import localFont from "next/font/local";
+import { Fraunces, Libre_Franklin } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import Header from "@/components/Header";
@@ -18,9 +19,17 @@ const newsreader = localFont({
   display: "swap",
   fallback: ["Iowan Old Style", "Palatino Linotype", "Georgia", "serif"],
 });
-const inter = localFont({
-  src: [{ path: "../fonts/inter-latin-standard-normal.woff2", style: "normal", weight: "100 900" }],
-  variable: "--font-inter",
+const fraunces = Fraunces({
+  subsets: ["latin", "latin-ext"],
+  style: ["normal", "italic"],
+  axes: ["opsz"],
+  variable: "--font-fraunces",
+  display: "swap",
+  fallback: ["Newsreader", "Iowan Old Style", "Georgia", "serif"],
+});
+const franklin = Libre_Franklin({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-franklin",
   display: "swap",
   fallback: ["system-ui", "Segoe UI", "Helvetica Neue", "Arial", "sans-serif"],
 });
@@ -53,7 +62,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
   const weeks = await getWeeks();
   const latest = weeks.flatMap((w) => w.moves.map((m) => ({ ...m, week: w.week }))).sort((a, b) => (a.date < b.date ? 1 : -1)).slice(0, 8);
   return (
-    <html lang="en" className={`${newsreader.variable} ${inter.variable} ${mono.variable}`}>
+    <html lang="en" className={`${newsreader.variable} ${fraunces.variable} ${franklin.variable} ${mono.variable}`}>
       <body>
         <a href="#main" className="sans sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-paper focus:px-3 focus:py-2 focus:text-sm focus:ring-2 focus:ring-blue">
           Skip to content

@@ -19,8 +19,10 @@
   --color-coral: #ff6f61;        /* Living Coral 16-1546, COTY 2019 */
   --color-greenery: #88b04b;     /* Greenery 15-0343, COTY 2017 */
 
+  /* Four voices: Fraunces displays, Newsreader reads, Libre Franklin labels, JetBrains counts. */
+  --font-display: var(--font-fraunces), var(--font-newsreader), "Iowan Old Style", Georgia, serif;
   --font-serif: var(--font-newsreader), "Iowan Old Style", "Palatino Linotype", Georgia, serif;
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: var(--font-franklin), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: var(--font-jetbrains), ui-monospace, "SFMono-Regular", Menlo, monospace;
 
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
@@ -50,7 +52,9 @@ html {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
-  font-feature-settings: "kern", "liga", "onum", "pnum";
+  font-optical-sizing: auto;
+  font-variant-numeric: oldstyle-nums proportional-nums;
+  font-feature-settings: "kern", "liga", "calt";
   scroll-behavior: smooth;
   scroll-padding-top: 5rem;
 }
@@ -75,17 +79,19 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
   border-radius: 2px;
 }
 
-.sans { font-family: var(--font-sans); font-feature-settings: "kern", "tnum", "ss01"; }
-.mono { font-family: var(--font-mono); font-feature-settings: "tnum", "zero"; }
+.sans { font-family: var(--font-sans); font-variant-numeric: lining-nums proportional-nums; letter-spacing: 0.005em; }
+.mono { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-feature-settings: "zero"; }
 .tnum { font-variant-numeric: tabular-nums lining-nums; }
 .onum { font-variant-numeric: oldstyle-nums proportional-nums; }
 
 .kicker {
   font-family: var(--font-sans);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
   text-transform: uppercase;
   font-weight: 600;
+  line-height: 1;
+  font-variant-numeric: lining-nums;
   color: var(--color-blue);
 }
 .kicker--mocha { color: var(--color-mocha); }
@@ -96,8 +102,9 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .meta {
   font-family: var(--font-sans);
   font-size: 0.8rem;
+  letter-spacing: 0.005em;
   color: var(--color-gray);
-  font-feature-settings: "tnum";
+  font-variant-numeric: lining-nums proportional-nums;
 }
 .meta a:hover { color: var(--color-blue); }
 
@@ -106,11 +113,20 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .rule-double { border-top: 3px double var(--rule-strong); }
 
 .wordmark {
-  font-family: var(--font-serif);
-  font-weight: 500;
-  letter-spacing: -0.015em;
-  font-variation-settings: "opsz" 72;
+  font-family: var(--font-display);
+  font-weight: 560;
+  letter-spacing: -0.02em;
+  font-optical-sizing: auto;
 }
+
+/* Headlines speak in Fraunces; apparatus labels (.kicker) and prose subheads stay in their own voice. */
+h1, h2, h3, .display {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  letter-spacing: -0.011em;
+}
+.display-italic { font-family: var(--font-display); font-style: italic; font-optical-sizing: auto; }
+h2.kicker, h3.kicker, .kicker { letter-spacing: 0.15em; }
 
 /* Link underline that draws in on hover (Mocha Mousse) */
 .u-draw {
@@ -225,16 +241,17 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
 .prose > p { margin: 0 0 1.35em; hanging-punctuation: first; }
 .prose > p:first-of-type::first-letter {
   float: left;
-  font-size: 3.6em;
-  line-height: 0.86;
-  padding: 0.06em 0.12em 0 0;
-  font-weight: 500;
+  font-family: var(--font-display);
+  font-size: 3.7em;
+  line-height: 0.8;
+  padding: 0.04em 0.12em 0 0;
+  font-weight: 520;
   color: var(--color-blue);
-  font-variation-settings: "opsz" 72;
+  font-optical-sizing: auto;
 }
-.prose h2 { font-family: var(--font-serif); font-weight: 500; font-size: 1.45rem; line-height: 1.2; letter-spacing: -0.01em; margin: 2.2em 0 0.7em; font-variation-settings: "opsz" 32; scroll-margin-top: 5rem; }
+.prose h2 { font-family: var(--font-display); font-weight: 500; font-size: 1.55rem; line-height: 1.16; letter-spacing: -0.016em; margin: 2.3em 0 0.7em; font-optical-sizing: auto; scroll-margin-top: 5rem; }
 .prose h2::before { content: ""; display: block; width: 2.5rem; border-top: 2px solid var(--color-mocha); margin-bottom: 0.9rem; }
-.prose h3 { font-family: var(--font-sans); font-size: 0.95rem; font-weight: 600; margin: 1.8em 0 0.5em; }
+.prose h3 { font-family: var(--font-sans); font-size: 0.82rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-ink-soft); margin: 2em 0 0.55em; }
 .prose a:not(.person) { color: var(--color-blue); text-decoration: underline; text-decoration-color: color-mix(in oklab, var(--color-blue) 35%, transparent); text-underline-offset: 3px; transition: text-decoration-color 200ms ease; }
 .prose a:not(.person):hover { text-decoration-color: var(--color-blue); }
 .prose a.person { border-bottom: 1px dotted var(--color-mocha); color: inherit; transition: background 200ms ease, border-color 200ms ease; }
@@ -282,12 +299,51 @@ kbd { font-family: var(--font-mono); font-size: 0.72rem; padding: 0.1rem 0.4rem;
 .swatch { width: 100%; aspect-ratio: 1 / 0.62; border-radius: 4px; border: 1px solid color-mix(in oklab, var(--color-ink) 10%, transparent); }
 
 /* ------------------------------------------------------------------
+   Masthead — aurora glow, gradient wordmark, gradient rule.
+   ------------------------------------------------------------------ */
+.masthead { position: relative; isolation: isolate; overflow: hidden; }
+.aurora { position: absolute; inset: -34% -12% auto -12%; height: 340px; z-index: 0; filter: blur(62px); opacity: 0.42; pointer-events: none; }
+.aurora i { position: absolute; display: block; border-radius: 999px; will-change: transform; }
+.aurora i:nth-child(1) { width: 40%; height: 230px; left: 1%; top: 8px; background: radial-gradient(circle, var(--color-blue), transparent 70%); animation: aurora-drift 17s var(--ease-out-quint) infinite alternate; }
+.aurora i:nth-child(2) { width: 36%; height: 230px; left: 33%; top: 0; background: radial-gradient(circle, var(--color-peri), transparent 70%); animation: aurora-drift 21s var(--ease-out-quint) infinite alternate-reverse; }
+.aurora i:nth-child(3) { width: 34%; height: 230px; right: 2%; top: 14px; background: radial-gradient(circle, var(--color-magenta), transparent 70%); animation: aurora-drift 25s var(--ease-out-quint) infinite alternate; }
+@keyframes aurora-drift { to { transform: translate3d(3%, -8%, 0) scale(1.14); } }
+
+.wordmark--grad {
+  background: linear-gradient(100deg, var(--color-blue), var(--color-peri) 34%, var(--color-magenta) 62%, var(--color-mocha));
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: wm-shimmer 9s linear infinite;
+}
+@keyframes wm-shimmer { to { background-position: 200% 0; } }
+
+.gradbar { height: 4px; border-radius: 999px; background: linear-gradient(90deg, var(--color-blue), var(--color-peri) 26%, var(--color-magenta) 52%, var(--color-mocha) 74%, var(--color-peach)); }
+
+/* Glass bar — a frosted, app-style header that arrives on scroll. */
+.glassbar { position: fixed; left: 0; right: 0; top: 0; z-index: 50; padding: 10px 16px; transform: translateY(-115%); opacity: 0; transition: transform 420ms var(--ease-out-quint), opacity 300ms ease; pointer-events: none; }
+.glassbar.is-on { transform: none; opacity: 1; pointer-events: auto; }
+.glassbar__inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 9px 16px; border-radius: 14px; border: 1px solid color-mix(in oklab, var(--color-ink) 8%, transparent); background: color-mix(in oklab, var(--color-paper) 72%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); box-shadow: 0 18px 40px -30px color-mix(in oklab, var(--color-ink) 55%, transparent); }
+.glassbar__word { font-family: var(--font-display); font-weight: 560; font-size: 1.25rem; letter-spacing: -0.02em; font-optical-sizing: auto; }
+.glassbar__nav { display: flex; gap: 18px; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; color: var(--color-ink-soft); overflow-x: auto; scrollbar-width: none; }
+.glassbar__nav::-webkit-scrollbar { display: none; }
+.glassbar__nav a { position: relative; padding-bottom: 4px; white-space: nowrap; transition: color 200ms ease; }
+.glassbar__nav a:hover { color: var(--color-ink); }
+.glassbar__nav a.on { color: var(--color-ink); }
+.glassbar__nav a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 999px; background: linear-gradient(90deg, var(--color-blue), var(--color-peri), var(--color-magenta)); }
+.statuspill { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; font-family: var(--font-sans); font-weight: 600; font-size: 0.78rem; color: var(--color-ink); padding: 0.42rem 0.8rem; border-radius: 999px; background: var(--color-paper); white-space: nowrap; }
+.statuspill::before { content: ""; position: absolute; inset: 0; border-radius: 999px; padding: 1.5px; background: conic-gradient(from var(--beam-angle), transparent 0 55%, var(--color-blue) 66%, var(--color-magenta) 80%, var(--color-mocha) 92%, transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: beam-spin 7s linear infinite; pointer-events: none; }
+.statuspill .sd { width: 7px; height: 7px; border-radius: 999px; background: var(--color-greenery); box-shadow: 0 0 8px var(--color-greenery); }
+@media (max-width: 640px) { .statuspill { display: none; } .glassbar__nav { font-size: 0.8rem; gap: 14px; } .glassbar__word { font-size: 1.1rem; } }
+
+/* ------------------------------------------------------------------
    Home feed — a vertical, full-viewport, snap-scrolling story feed.
    Snap turns on only on the homepage (html.home), so article pages
    with anchor navigation stay untouched.
    ------------------------------------------------------------------ */
 html.home { scroll-snap-type: y proximity; }
-@media (max-width: 640px) { html.home { scroll-snap-type: y mandatory; } }
 @media (prefers-reduced-motion: reduce) { html.home { scroll-snap-type: none; } }
 
 .home-feed {
@@ -308,7 +364,6 @@ html.home { scroll-snap-type: y proximity; }
   overflow: hidden;
   isolation: isolate;
 }
-@media (max-width: 640px) { .panel { scroll-snap-stop: always; } }
 .panel + .panel { border-top: 1px solid var(--rule); }
 
 .panel__inner {
@@ -324,12 +379,12 @@ html.home { scroll-snap-type: y proximity; }
 
 .panel__eyebrow { display: inline-flex; align-items: center; gap: 0.55rem; }
 .panel__title {
-  font-family: var(--font-serif);
+  font-family: var(--font-display);
   font-weight: 500;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.022em;
   line-height: 1.02;
   font-size: clamp(2.1rem, 6.4vw, 4.3rem);
-  font-variation-settings: "opsz" 72;
+  font-optical-sizing: auto;
   text-wrap: balance;
 }
 .panel__dek {
@@ -342,11 +397,12 @@ html.home { scroll-snap-type: y proximity; }
 .panel__epi {
   margin-top: 1.4rem;
   max-width: 40ch;
+  font-family: var(--font-display);
   font-style: italic;
   font-size: clamp(1.05rem, 2.4vw, 1.4rem);
-  line-height: 1.32;
+  line-height: 1.3;
   color: var(--color-ink);
-  font-variation-settings: "opsz" 40;
+  font-optical-sizing: auto;
 }
 
 /* Ambient Pantone orbs drifting behind a panel (kept demure). */
@@ -431,6 +487,10 @@ html.home { scroll-snap-type: y proximity; }
 .home-progress i { display: block; height: 100%; width: var(--p, 0%); background: linear-gradient(90deg, var(--color-blue), var(--color-magenta)); transition: width 120ms linear; }
 @media (min-width: 900px) { .home-progress { display: none; } }
 
+/* Numeral discipline: body reads in oldstyle, the apparatus sets lining, data columns stay tabular. */
+.tnum { font-variant-numeric: tabular-nums lining-nums; }
+.onum { font-variant-numeric: oldstyle-nums proportional-nums; }
+
 /* Print */
 @media print {
   header, footer, nav, .no-print { display: none !important; }
@@ -439,43 +499,3 @@ html.home { scroll-snap-type: y proximity; }
   a::after { content: ""; }
   .prose ol.sources a::after { content: " (" attr(href) ")"; font-size: 0.8em; }
 }
-
-/* ------------------------------------------------------------------
-   Masthead — aurora glow, gradient wordmark, gradient rule.
-   ------------------------------------------------------------------ */
-.masthead { position: relative; isolation: isolate; overflow: hidden; }
-.aurora { position: absolute; inset: -34% -12% auto -12%; height: 340px; z-index: 0; filter: blur(62px); opacity: 0.42; pointer-events: none; }
-.aurora i { position: absolute; display: block; border-radius: 999px; will-change: transform; }
-.aurora i:nth-child(1) { width: 40%; height: 230px; left: 1%; top: 8px; background: radial-gradient(circle, var(--color-blue), transparent 70%); animation: aurora-drift 17s var(--ease-out-quint) infinite alternate; }
-.aurora i:nth-child(2) { width: 36%; height: 230px; left: 33%; top: 0; background: radial-gradient(circle, var(--color-peri), transparent 70%); animation: aurora-drift 21s var(--ease-out-quint) infinite alternate-reverse; }
-.aurora i:nth-child(3) { width: 34%; height: 230px; right: 2%; top: 14px; background: radial-gradient(circle, var(--color-magenta), transparent 70%); animation: aurora-drift 25s var(--ease-out-quint) infinite alternate; }
-@keyframes aurora-drift { to { transform: translate3d(3%, -8%, 0) scale(1.14); } }
-
-.wordmark--grad {
-  background: linear-gradient(100deg, var(--color-blue), var(--color-peri) 34%, var(--color-magenta) 62%, var(--color-mocha));
-  background-size: 200% 100%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  animation: wm-shimmer 9s linear infinite;
-}
-@keyframes wm-shimmer { to { background-position: 200% 0; } }
-
-.gradbar { height: 4px; border-radius: 999px; background: linear-gradient(90deg, var(--color-blue), var(--color-peri) 26%, var(--color-magenta) 52%, var(--color-mocha) 74%, var(--color-peach)); }
-
-/* Glass bar — a frosted, app-style header that arrives on scroll. */
-.glassbar { position: fixed; left: 0; right: 0; top: 0; z-index: 50; padding: 10px 16px; transform: translateY(-115%); opacity: 0; transition: transform 420ms var(--ease-out-quint), opacity 300ms ease; pointer-events: none; }
-.glassbar.is-on { transform: none; opacity: 1; pointer-events: auto; }
-.glassbar__inner { max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 9px 16px; border-radius: 14px; border: 1px solid color-mix(in oklab, var(--color-ink) 8%, transparent); background: color-mix(in oklab, var(--color-paper) 72%, transparent); -webkit-backdrop-filter: saturate(1.4) blur(14px); backdrop-filter: saturate(1.4) blur(14px); box-shadow: 0 18px 40px -30px color-mix(in oklab, var(--color-ink) 55%, transparent); }
-.glassbar__word { font-family: var(--font-serif); font-weight: 500; font-size: 1.25rem; letter-spacing: -0.01em; font-variation-settings: "opsz" 40; }
-.glassbar__nav { display: flex; gap: 18px; font-family: var(--font-sans); font-size: 0.85rem; font-weight: 600; color: var(--color-ink-soft); overflow-x: auto; scrollbar-width: none; }
-.glassbar__nav::-webkit-scrollbar { display: none; }
-.glassbar__nav a { position: relative; padding-bottom: 4px; white-space: nowrap; transition: color 200ms ease; }
-.glassbar__nav a:hover { color: var(--color-ink); }
-.glassbar__nav a.on { color: var(--color-ink); }
-.glassbar__nav a.on::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 2px; border-radius: 999px; background: linear-gradient(90deg, var(--color-blue), var(--color-peri), var(--color-magenta)); }
-.statuspill { position: relative; isolation: isolate; display: inline-flex; align-items: center; gap: 8px; flex-shrink: 0; font-family: var(--font-sans); font-weight: 600; font-size: 0.78rem; color: var(--color-ink); padding: 0.42rem 0.8rem; border-radius: 999px; background: var(--color-paper); white-space: nowrap; }
-.statuspill::before { content: ""; position: absolute; inset: 0; border-radius: 999px; padding: 1.5px; background: conic-gradient(from var(--beam-angle), transparent 0 55%, var(--color-blue) 66%, var(--color-magenta) 80%, var(--color-mocha) 92%, transparent); -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0); -webkit-mask-composite: xor; mask-composite: exclude; animation: beam-spin 7s linear infinite; pointer-events: none; }
-.statuspill .sd { width: 7px; height: 7px; border-radius: 999px; background: var(--color-greenery); box-shadow: 0 0 8px var(--color-greenery); }
-@media (max-width: 640px) { .statuspill { display: none; } .glassbar__nav { font-size: 0.8rem; gap: 14px; } .glassbar__word { font-size: 1.1rem; } }
