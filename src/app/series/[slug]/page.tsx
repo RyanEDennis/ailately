@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticles } from "@/lib/content";
-import { slugify } from "@/lib/slug";
+import { slugify, formatDate } from "@/lib/slug";
+
+const CAPSTONE_SLUG = "biggest-ai-hires-of-2026-so-far";
 
 type Params = { slug: string };
 
@@ -16,11 +18,11 @@ async function seriesFor(slug: string) {
   const articles = await getArticles();
   const name = articles.map((a) => a.series).find((s) => s && slugify(s) === slug);
   if (!name) return null;
-  const pieces = articles.filter((a) => a.series === name).sort((a, b) => a.order - b.order);
-  // The capstone (the 2026 hires roundup) closes the series.
-  const capstone = pieces.find((p) => p.slug === "biggest-ai-hires-of-2026-so-far");
-  const ordered = capstone ? [...pieces.filter((p) => p.slug !== capstone.slug), capstone] : pieces;
-  return { name, pieces: ordered };
+  // Chronological: the year's stories in the order they broke, oldest first.
+  const pieces = articles
+    .filter((a) => a.series === name)
+    .sort((a, b) => (a.date ?? "").localeCompare(b.date ?? "") || a.order - b.order);
+  return { name, pieces };
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
@@ -40,15 +42,15 @@ export default async function SeriesPage({ params }: { params: Promise<Params> }
         <p className="kicker">Series</p>
         <h1 className="mt-2 text-[2rem] leading-tight font-medium tracking-[-0.01em]">{s.name}</h1>
         <p className="mt-2 text-ink-soft">
-          The stories that shaped the year, in reading order. The series closes with the capstone, which gathers every move into one ranked roster.
+          The stories that shaped the year, in the order they broke. A capstone roundup ranks every move into one roster.
         </p>
       </header>
       <ol className="reveal list-none p-0 m-0 relative">
-        {s.pieces.map((p, i) => (
-          <li key={p.slug} className="row grid gap-x-5 rule py-5 md:grid-cols-[3.2rem_1fr]" data-row data-selected="false">
-            <span className="num mono hidden text-[0.85rem] pt-1 md:block" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+        {s.pieces.map((p) => (
+          <li key={p.slug} className="row grid gap-x-5 rule py-5 md:grid-cols-[4.5rem_1fr]" data-row data-selected="false">
+            <span className="mono hidden text-[0.78rem] text-gray tnum pt-1.5 md:block">{p.date ? formatDate(p.date, { month: "short", day: "numeric" }) : ""}</span>
             <div>
-              <p className="kicker">{p.categoryLabel}{i === s.pieces.length - 1 ? <span className="kicker--magenta"> · Capstone</span> : null}</p>
+              <p className="kicker">{p.categoryLabel}{p.slug === CAPSTONE_SLUG ? <span className="kicker--magenta"> · Capstone</span> : null}</p>
               <h2 className="mt-1.5 text-[1.35rem] leading-[1.2] font-medium">
                 <Link href={`/articles/${p.slug}`} data-primary className="u-draw">{p.title}</Link>
               </h2>
