@@ -24,11 +24,11 @@ export const AUTHORS: Author[] = [
   {
     slug: "kelly-dennis",
     name: "Kelly Dennis",
-    role: "Senior Technical Writer",
+    role: "Co-Editor and Lead Technical Analyst",
     x: "keldenni",
     accent: "#BE3455", // Viva Magenta
     initials: "KD",
-    bio: "Kelly Dennis is a senior technical writer covering software quality and the craft of testing. She writes about the way AI is reshaping the tester's role, from automated test generation to the evaluation of AI itself.",
+    bio: "Kelly Dennis is Co-Editor and Lead Technical Analyst of AI Lately, where she turns the machinery of AI, cloud, and emerging technology into analysis a board member and a build engineer can both act on. Her career centers on that translation: years of technical documentation, UX and content strategy, and reporting on frontier technology from blockchain markets to the modern software stack. Google-certified in UX design, trained at Hampton University, and finishing a B.S. in Information Technology, she pairs a researcher's precision with a writer's ear. Editors reach for her when a story hides inside a spec, a filing, or a benchmark, and someone has to make it plain.",
   },
 ];
 
