@@ -54,34 +54,33 @@ npm run new:article -- "Talent Tectonics: A Headline" hiring
 npm run new:post -- "A Bold Opinion Headline" agents
 ```
 
-## The daily newsdesk
+## The daily desk
 
-`scripts/daily.mjs` gathers leads once a day from **vetted public sources only** — company newsroom RSS, the SEC EDGAR 8-K Item 5.02 JSON API, and the arXiv API — ranks them, drafts one article in house style through the Anthropic Messages API, and enforces the linter before writing the file. A draft that fails the linter is discarded and the next lead is tried.
+Two scheduled agents run once a day. Each is **Claude Code on a Pro/Max subscription** (`claude -p`, no metered API charge) reading a prompt file, using WebSearch and WebFetch to research from **vetted public sources only**, and gated by hard checks before anything publishes.
+
+**Article desk** (`.github/workflows/daily.yml`, 11:17 UTC → `scripts/daily-prompt.md`). Surveys the web's top AI sources, ranks the ten biggest stories, and writes **two pieces bylined Ryan Elliott Dennis**: a daily roundup of the ten (`kind: roundup`) and a deep-dive on the lead story (`kind: analysis`). The house-style linter (zero via negativa, zero anaphora, 1,000–2,100 words) and the guardrail tests gate both.
+
+**Signal desk** (`.github/workflows/signal.yml`, 11:47 UTC → `scripts/signal-prompt.md`). Finds the day's biggest AI people-moves and appends them to the current ISO week's file. `scripts/signal-week.mjs` resolves the week; `scripts/validate-signal.mjs` enforces the schema — enum types, https sources, the personal-data allowlist, dedup, and zero via negativa in every rendered string.
 
 ```bash
-DRY_RUN=true node scripts/daily.mjs      # gather and rank leads, draft nothing
-ANTHROPIC_API_KEY=... AUTO_PUBLISH=true node scripts/daily.mjs
+node scripts/signal-week.mjs                       # which week file today's moves land in
+npm run validate:signal                            # validate every week file
+SINCE_DAYS=3 DRY_RUN=true node scripts/daily.mjs   # legacy: gather and rank RSS/EDGAR/arXiv leads
 ```
 
 Legal guardrails are code, not comments (`scripts/lib/guard.mjs`), and follow the hiQ Labs v. LinkedIn analysis in `docs`:
 
-- **LinkedIn is blocked.** `linkedin.com` and `licdn.com` are in `FORBIDDEN_HOSTS`; every outbound request routes through one client that raises on them, and a test asserts it.
+- **LinkedIn is blocked.** `linkedin.com` and `licdn.com` are in `FORBIDDEN_HOSTS`; the prompts forbid citing them, and the guardrail test and the Signal validator both reject them.
 - **No subscriber data lives here.** A test fails if a subscriber-, customer-, or contact-shaped database appears in the repo. Publishing, payments, and subscribers belong on a separate platform.
-- **Personal data stays within an allowlist:** name, role, employer, public source, date. Enforced at the model layer.
+- **Personal data stays within an allowlist:** name, role, employer, public source, date. The Signal validator rejects any other field.
 - **Every Signal move carries a confidence label** (`confirmed` | `reported` | `inferred`) and a source URL. Required, no default.
 
-### Scheduling
+### Configure the repository once
 
-The GitHub Actions workflow `.github/workflows/daily.yml` runs the newsdesk daily at 11:17 UTC. It drafts with **Claude Code on a Pro/Max subscription** (no metered API charge), then enforces the house-style linter and guardrail tests as hard gates before anything publishes.
+- Secret `CLAUDE_CODE_OAUTH_TOKEN` — generate locally with `claude setup-token` (requires a Claude Pro or Max plan) and paste the token here. Headless Claude Code usage draws on your subscription's usage limits rather than metered API credits. Both workflows need it.
+- Variable `AUTO_PUBLISH` — publishing is **live by default**: each run commits to `main` and Vercel redeploys. Set `AUTO_PUBLISH` to `false` to open a review pull request instead. The code path is otherwise identical.
 
-Configure the repository once:
-
-- Secret `CLAUDE_CODE_OAUTH_TOKEN` — generate locally with `claude setup-token` (requires a Claude Pro or Max plan) and paste the token here. Headless Claude Code usage currently draws on your subscription's usage limits rather than metered API credits.
-- Variable `AUTO_PUBLISH` — set to `true` to commit each day's article straight to `content/articles` (Vercel redeploys on push), or leave it unset/`false` to open a pull request for review.
-
-Flip between publish and review by changing that one variable; the code path is identical.
-
-The generation step runs `claude -p "$(cat scripts/daily-prompt.md)"`; edit `scripts/daily-prompt.md` to change what the desk covers. Legacy note: `scripts/daily.mjs` + `scripts/lib/anthropic.mjs` remain for a metered-API path if you ever set `ANTHROPIC_API_KEY` and call them directly, but the scheduled workflow uses the subscription token and never touches the API.
+Edit the two prompt files to change what each desk covers. Legacy note: `scripts/daily.mjs` + `scripts/lib/anthropic.mjs` remain for a metered-API path if you set `ANTHROPIC_API_KEY` and call them directly, though the scheduled workflows use the subscription token.
 
 ## For machines
 

@@ -10,6 +10,8 @@
     "lint:style": "node scripts/lint-style.mjs",
     "test:guardrails": "node scripts/test-guardrails.mjs",
     "daily": "node scripts/daily.mjs",
+    "signal:week": "node scripts/signal-week.mjs",
+    "validate:signal": "node scripts/validate-signal.mjs",
     "new:article": "node scripts/new-article.mjs",
     "new:post": "node scripts/new-post.mjs"
   },

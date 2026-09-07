@@ -1,9 +1,13 @@
 import type { Piece } from "./content";
 import { SITE } from "./site";
+import { authorForName } from "./authors";
 
 export function pieceJsonLd(piece: Piece, url: string) {
   const isOpinion = piece.section === "blog";
-  const author = isOpinion
+  const known = authorForName(piece.author);
+  const author = known
+    ? { "@type": "Person", name: known.name, jobTitle: known.role, url: `${SITE.url}/authors/${known.slug}`, sameAs: [`https://x.com/${known.x}`] }
+    : isOpinion
     ? { "@type": "Person", name: piece.author, jobTitle: piece.role, url: `${SITE.url}/about` }
     : { "@type": "Organization", name: piece.author, url: SITE.url };
   return {

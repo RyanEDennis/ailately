@@ -1,22 +1,21 @@
-name: Daily desk (article)
+name: Daily desk (Signal)
 
-# Once a day, an agent surveys the web's top AI news, ranks the ten biggest stories,
-# and writes TWO pieces in AI Lately house style — a daily roundup and a deep-dive on
-# the lead story — both bylined Ryan Elliott Dennis. See scripts/daily-prompt.md.
+# Once a day, an agent finds the day's biggest AI people-moves and appends them to the
+# current ISO week's Signal file, then refreshes the week's headline and read.
+# See scripts/signal-prompt.md and docs/SIGNAL_SCHEMA.md.
 #
 # Billing: Claude Code runs on a Pro/Max SUBSCRIPTION OAuth token (secret
-# CLAUDE_CODE_OAUTH_TOKEN, from `claude setup-token`). No metered ANTHROPIC_API_KEY is used.
+# CLAUDE_CODE_OAUTH_TOKEN). No metered ANTHROPIC_API_KEY is used.
 #
-# Gates (hard, after generation): the house-style linter (zero via negativa, zero anaphora,
-# 1,000-2,100 words) and the guardrail tests. A draft that fails either gate fails the job
-# and publishes nothing.
+# Gates (hard, after generation): the Signal validator (schema, enums, https sources,
+# personal-data allowlist, dedup, zero via negativa in prose) and the guardrail tests.
 #
-# Publishing: live by default (commit to main; Vercel redeploys). Set the repository
-# variable AUTO_PUBLISH to "false" to open a review pull request instead.
+# Publishing: live by default (commit to main). Set repository variable AUTO_PUBLISH
+# to "false" to open a review pull request instead.
 
 on:
   schedule:
-    - cron: "17 11 * * *"   # 11:17 UTC daily (~7:17am America/New_York)
+    - cron: "47 11 * * *"   # 11:47 UTC daily, 30 min after the article job
   workflow_dispatch:
     inputs:
       dry_run:
@@ -25,7 +24,7 @@ on:
         default: false
 
 concurrency:
-  group: daily-article
+  group: daily-signal
   cancel-in-progress: false
 
 permissions:
@@ -33,7 +32,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  draft:
+  signal:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,14 +44,16 @@ jobs:
 
       - run: npm ci
 
-      - name: Guardrail tests (baseline)
-        run: npm run test:guardrails
+      - name: Validate current Signal (baseline)
+        run: |
+          npm run validate:signal
+          npm run test:guardrails
 
       - name: Install Claude Code
         if: ${{ github.event.inputs.dry_run != 'true' }}
         run: npm install -g @anthropic-ai/claude-code
 
-      - name: Draft today's two pieces (subscription, via OAuth token)
+      - name: Add today's moves (subscription, via OAuth token)
         if: ${{ github.event.inputs.dry_run != 'true' }}
         env:
           CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
@@ -62,24 +63,24 @@ jobs:
             echo "Generate it locally with:  claude setup-token   (requires a Claude Pro or Max plan)."
             exit 1
           fi
-          claude -p "$(cat scripts/daily-prompt.md)" \
+          claude -p "$(cat scripts/signal-prompt.md)" \
             --permission-mode acceptEdits \
-            --allowedTools "Read,Write,Edit,Grep,Glob,WebSearch,WebFetch,Bash(node scripts/lint-style.mjs:*),Bash(node:*),Bash(ls:*),Bash(cat:*)" \
-            --max-turns 120
+            --allowedTools "Read,Write,Edit,Grep,Glob,WebSearch,WebFetch,Bash(node scripts/signal-week.mjs:*),Bash(node scripts/validate-signal.mjs:*),Bash(node:*),Bash(ls:*),Bash(cat:*)" \
+            --max-turns 60
 
-      - name: Enforce house style and guardrails
+      - name: Enforce Signal schema and guardrails
         run: |
-          npm run lint:style
+          npm run validate:signal
           npm run test:guardrails
 
       - name: Detect changes
         id: changes
         run: |
-          if [ -n "$(git status --porcelain content/)" ]; then
+          if [ -n "$(git status --porcelain content/signal/)" ]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "No new content this run — the desk stayed quiet."
+            echo "No new moves this run — the Signal stayed quiet."
           fi
 
       - name: Publish live (default)
@@ -87,8 +88,8 @@ jobs:
         run: |
           git config user.name "AI Lately Desk"
           git config user.email "editor@ailately.com"
-          git add content/
-          git commit -m "desk: daily article for $(date -u +%Y-%m-%d)"
+          git add content/signal/
+          git commit -m "signal: daily moves for $(date -u +%Y-%m-%d)"
           for i in 1 2 3 4 5; do
             git pull --rebase origin main && git push origin HEAD:main && exit 0
             echo "push retry $i"; sleep $((i * 5))
@@ -99,11 +100,11 @@ jobs:
         if: steps.changes.outputs.changed == 'true' && vars.AUTO_PUBLISH == 'false' && github.event.inputs.dry_run != 'true'
         uses: peter-evans/create-pull-request@v6
         with:
-          branch: desk/article-${{ github.run_id }}
-          title: "Daily article draft for review"
-          commit-message: "desk: daily article draft"
-          add-paths: content/
+          branch: desk/signal-${{ github.run_id }}
+          title: "Daily Signal update for review"
+          commit-message: "signal: daily moves"
+          add-paths: content/signal/
           body: |
-            Automated draft from the daily desk, generated on your Claude subscription.
-            It passed the house-style linter and the guardrail tests. Review the facts and
+            Automated Signal update from the daily desk, generated on your Claude subscription.
+            It passed the Signal validator and the guardrail tests. Review the moves and
             sources, then merge to publish (Vercel redeploys on merge).
