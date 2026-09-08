@@ -1,7 +1,68 @@
 {
   "week": "2026-W37",
   "range": { "start": "2026-09-07", "end": "2026-09-13" },
-  "headline": "Frontier Firms Fixate on Models, Leaving Leadership Quiet",
-  "read": "OpenAI's GPT-6 Astra landed as the week's loudest artifact, trained across roughly 100,000 Nvidia Grace Blackwell GPUs and prompting Jensen Huang to declare AGI arrived over the weekend. Google DeepMind answered days earlier with Gemini 3.8 Flash, and Anthropic had already shipped Claude Fable 5.1 alongside a 75 percent cut to cache-read pricing. Meta quietly added Muse Spark 1.3 to the mix. Four frontier releases inside a single stretch crowd out the usual personnel churn, and the effect shows in the calendar: newsrooms and wire services carried product headlines instead of hiring ones. Nvidia's pending $12.9 billion purchase of Hugging Face, announced days earlier, still awaits the formal leadership assignments that typically follow a deal that size, leaving founders Clem Delangue, Julien Chaumond, and Thomas Wolf in a holding pattern before titles at their new home become official. Boards and hiring desks appear to be watching the same scoreboard as everyone else, pausing personnel announcements while engineering teams race to answer each other's launches. History suggests the pause is tactical rather than permanent: quarterly earnings, a busy conference calendar, and integration work at Nvidia all create natural occasions for fresh confirmed moves. Today brought model benchmarks and market reactions in volume, and the roster of dated, sourced executive changes stayed thin. Watch the Hugging Face integration for the first concrete titles, since acquisitions this large usually settle organizational charts within weeks of closing.",
-  "moves": []
+  "headline": "Tsimerman Trades Toronto Tenure for Independent AI Safety Institute",
+  "read": "Jacob Tsimerman turns a fresh Fields Medal into infrastructure, launching the Mathematical AI Safety Institute today as a Bay Area hub for treating AI risk as a solvable math problem. Andrew Critch runs it as Executive Director, pairing years of writing about catastrophic AI scenarios with an institute built to formalize them. Paul Christiano and Geoffrey Irving join the advisory panel, lending Alignment Research Center rigor and frontier-lab deployment experience to a roster staffed mostly by mathematicians rather than machine-learning engineers. Their presence signals that MAISI aims at proof-grade guarantees, a bar current labs have yet to clear, rather than another policy paper or benchmark suite. Model releases dominated the earlier days of the week: GPT-6 Astra, Gemini 3.8 Flash, Claude Fable 5.1, and Muse Spark 1.3 all landed within days of each other, crowding out personnel news as newsrooms chased benchmarks instead. Today reverses that pattern with a genuine structural move, a new institution fully staffed at launch and aimed squarely at the safety gap those same frontier releases keep widening. Watch whether MAISI's January 2027 cohort pulls mathematicians away from the labs themselves, since a credible independent safety body competing for the same talent pool would mark a real shift in where alignment work happens. Nvidia's pending Hugging Face purchase still awaits formal leadership assignments, leaving founders Clem Delangue, Julien Chaumond, and Thomas Wolf in a holding pattern before titles at their new home become official.",
+  "moves": [
+    {
+      "person": "Jacob Tsimerman",
+      "to": "Mathematical AI Safety Institute",
+      "title": "Scientific Director",
+      "from": "University of Toronto",
+      "fromTitle": "Professor of Mathematics",
+      "date": "2026-09-08",
+      "type": "founding",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://maisi.org/",
+      "sourceTitle": "Developing mathematical foundations for the safety of powerful AI systems.",
+      "publication": "Mathematical AI Safety Institute",
+      "read": "Tsimerman channels his fresh Fields Medal into a standalone institute that treats AI safety as a provable mathematics problem, giving proof-based safety research a credentialed home outside any single lab."
+    },
+    {
+      "person": "Andrew Critch",
+      "to": "Mathematical AI Safety Institute",
+      "title": "Executive Director",
+      "from": "Encultured AI",
+      "fromTitle": "CEO and Co-founder",
+      "date": "2026-09-08",
+      "type": "hire",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://maisi.org/",
+      "sourceTitle": "Developing mathematical foundations for the safety of powerful AI systems.",
+      "publication": "Mathematical AI Safety Institute",
+      "read": "Critch leaves day-to-day command of his own startup to operate an institute built on his own research into catastrophic AI scenarios, trading founder equity for institutional reach."
+    },
+    {
+      "person": "Paul Christiano",
+      "to": "Mathematical AI Safety Institute",
+      "title": "Scientific Advisory Panel Member",
+      "from": "Alignment Research Center",
+      "fromTitle": "Director",
+      "date": "2026-09-08",
+      "type": "board",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://maisi.org/",
+      "sourceTitle": "Developing mathematical foundations for the safety of powerful AI systems.",
+      "publication": "Mathematical AI Safety Institute",
+      "read": "Christiano lends the Alignment Research Center's empirical credibility to a mathematics-first safety institute, a bet that proof and practice converge faster together than apart."
+    },
+    {
+      "person": "Geoffrey Irving",
+      "to": "Mathematical AI Safety Institute",
+      "title": "Scientific Advisory Panel Member",
+      "from": "Resolution",
+      "fromTitle": "Chief Scientist",
+      "date": "2026-09-08",
+      "type": "board",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://maisi.org/",
+      "sourceTitle": "Developing mathematical foundations for the safety of powerful AI systems.",
+      "publication": "Mathematical AI Safety Institute",
+      "read": "Irving carries alignment experience from DeepMind, OpenAI, and the UK's AI Security Institute onto MAISI's panel, anchoring the math-heavy roster in deployment reality."
+    }
+  ]
 }
