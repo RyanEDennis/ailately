@@ -1,8 +1,8 @@
 {
   "week": "2026-W37",
   "range": { "start": "2026-09-07", "end": "2026-09-13" },
-  "headline": "Tsimerman Trades Toronto Tenure for Independent AI Safety Institute",
-  "read": "Jacob Tsimerman turns a fresh Fields Medal into infrastructure, launching the Mathematical AI Safety Institute today as a Bay Area hub for treating AI risk as a solvable math problem. Andrew Critch runs it as Executive Director, pairing years of writing about catastrophic AI scenarios with an institute built to formalize them. Paul Christiano and Geoffrey Irving join the advisory panel, lending Alignment Research Center rigor and frontier-lab deployment experience to a roster staffed mostly by mathematicians rather than machine-learning engineers. Their presence signals that MAISI aims at proof-grade guarantees, a bar current labs have yet to clear, rather than another policy paper or benchmark suite. Model releases dominated the earlier days of the week: GPT-6 Astra, Gemini 3.8 Flash, Claude Fable 5.1, and Muse Spark 1.3 all landed within days of each other, crowding out personnel news as newsrooms chased benchmarks instead. Today reverses that pattern with a genuine structural move, a new institution fully staffed at launch and aimed squarely at the safety gap those same frontier releases keep widening. Watch whether MAISI's January 2027 cohort pulls mathematicians away from the labs themselves, since a credible independent safety body competing for the same talent pool would mark a real shift in where alignment work happens. Nvidia's pending Hugging Face purchase still awaits formal leadership assignments, leaving founders Clem Delangue, Julien Chaumond, and Thomas Wolf in a holding pattern before titles at their new home become official.",
+  "headline": "Pretraining Researcher Coxon Quits, Predicts Perilous AI Race",
+  "read": "Jacob Coxon closes three years of pretraining work at OpenAI and Anthropic with a public warning that both labs race toward self-improving superintelligence at reckless speed. His resignation lands one day after Jacob Tsimerman's Mathematical AI Safety Institute opened its doors, turning a fresh Fields Medal into a Bay Area home for treating AI risk as solvable mathematics. Andrew Critch runs MAISI as Executive Director, pairing years of writing about catastrophic AI scenarios with an institute built to formalize them. Paul Christiano and Geoffrey Irving join the advisory panel, lending Alignment Research Center rigor and frontier-lab experience to a roster staffed mostly by mathematicians. Together the two stories pull the same thread from opposite ends: one researcher exits the labs entirely to sound an alarm from outside, while a fresh institute recruits mathematical talent to work the problem from within. Model releases dominated the earlier days of the week — GPT-6 Astra, Gemini 3.8 Flash, Claude Fable 5.1, and Muse Spark 1.3 — crowding out personnel news as newsrooms chased benchmarks instead. Coxon's exit reverses that pattern hard, pulling safety concerns back to center stage just as MAISI stakes its claim to a proof-based answer. Watch whether his departure becomes a rallying point for researchers weighing lab loyalty against public alarm, and whether MAISI's January 2027 cohort draws mathematicians away from frontier labs altogether. Nvidia's pending Hugging Face purchase still awaits formal leadership assignments, leaving founders Clem Delangue, Julien Chaumond, and Thomas Wolf in a holding pattern.",
   "moves": [
     {
       "person": "Jacob Tsimerman",
@@ -63,6 +63,21 @@
       "sourceTitle": "Developing mathematical foundations for the safety of powerful AI systems.",
       "publication": "Mathematical AI Safety Institute",
       "read": "Irving carries alignment experience from DeepMind, OpenAI, and the UK's AI Security Institute onto MAISI's panel, anchoring the math-heavy roster in deployment reality."
+    },
+    {
+      "person": "Jacob Coxon",
+      "to": "Independent",
+      "title": "Independent AI Safety Advocate",
+      "from": "Anthropic",
+      "fromTitle": "Pretraining Researcher",
+      "date": "2026-09-08",
+      "type": "departure",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://www.abc.net.au/news/2026-09-09/anthropic-researcher-coxon-quits-over-human-threat/107134164",
+      "sourceTitle": "Anthropic researcher quits saying AI developers believe 'it could kill us all'",
+      "publication": "ABC News",
+      "read": "Coxon trades a paycheck at either lab for a public alarm, turning three years of insider pretraining work into an outside warning about the race to self-improving superintelligence."
     }
   ]
 }
