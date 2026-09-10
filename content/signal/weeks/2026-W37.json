@@ -1,8 +1,8 @@
 {
   "week": "2026-W37",
   "range": { "start": "2026-09-07", "end": "2026-09-13" },
-  "headline": "Pretraining Researcher Coxon Quits, Predicts Perilous AI Race",
-  "read": "Jacob Coxon closes three years of pretraining work at OpenAI and Anthropic with a public warning that both labs race toward self-improving superintelligence at reckless speed. His resignation lands one day after Jacob Tsimerman's Mathematical AI Safety Institute opened its doors, turning a fresh Fields Medal into a Bay Area home for treating AI risk as solvable mathematics. Andrew Critch runs MAISI as Executive Director, pairing years of writing about catastrophic AI scenarios with an institute built to formalize them. Paul Christiano and Geoffrey Irving join the advisory panel, lending Alignment Research Center rigor and frontier-lab experience to a roster staffed mostly by mathematicians. Together the two stories pull the same thread from opposite ends: one researcher exits the labs entirely to sound an alarm from outside, while a fresh institute recruits mathematical talent to work the problem from within. Model releases dominated the earlier days of the week — GPT-6 Astra, Gemini 3.8 Flash, Claude Fable 5.1, and Muse Spark 1.3 — crowding out personnel news as newsrooms chased benchmarks instead. Coxon's exit reverses that pattern hard, pulling safety concerns back to center stage just as MAISI stakes its claim to a proof-based answer. Watch whether his departure becomes a rallying point for researchers weighing lab loyalty against public alarm, and whether MAISI's January 2027 cohort draws mathematicians away from frontier labs altogether. Nvidia's pending Hugging Face purchase still awaits formal leadership assignments, leaving founders Clem Delangue, Julien Chaumond, and Thomas Wolf in a holding pattern.",
+  "headline": "Christiano Lands Two Board Seats As OpenAI Courts Its Critics",
+  "read": "Paul Christiano spends the week collecting oversight roles rather than picking one lab to trust. On September 8 he joins the Mathematical AI Safety Institute's advisory panel, lending Alignment Research Center rigor to Jacob Tsimerman's proof-based institute. A day later OpenAI seats him on its Foundation board's Safety and Security Committee, placing an outside alignment critic inside the lab most often named in warnings about reckless AI development. The two appointments read as one bet: influence compounds faster through multiple seats than one. Andrew Critch runs MAISI as Executive Director, pairing years of writing about catastrophic AI scenarios with an institute built to formalize them, while Geoffrey Irving brings DeepMind, OpenAI, and UK AI Security Institute experience to the same panel. Jacob Coxon's exit from Anthropic pulls the opposite lever, trading three years of pretraining work for a public warning that both frontier labs race toward self-improving superintelligence at reckless speed. Together the three stories describe a field splitting its safety bets: quit and warn, build a new institute, or climb inside the boardroom. Model releases dominated the early week — GPT-6 Astra, Gemini 3.8 Flash, Claude Fable 5.1, and Muse Spark 1.3 — crowding out personnel news until Coxon and Christiano pulled safety back to center stage. Watch whether Christiano's OpenAI seat shapes deployment decisions or serves mainly as reputational cover, and whether MAISI's cohort draws mathematicians away from frontier labs.",
   "moves": [
     {
       "person": "Jacob Tsimerman",
@@ -78,6 +78,21 @@
       "sourceTitle": "Anthropic researcher quits saying AI developers believe 'it could kill us all'",
       "publication": "ABC News",
       "read": "Coxon trades a paycheck at either lab for a public alarm, turning three years of insider pretraining work into an outside warning about the race to self-improving superintelligence."
+    },
+    {
+      "person": "Paul Christiano",
+      "to": "OpenAI Foundation",
+      "title": "Board Member, Safety and Security Committee",
+      "from": "Alignment Research Center",
+      "fromTitle": "Director",
+      "date": "2026-09-09",
+      "type": "board",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://openai.com/index/paul-christiano-joins-openai-foundation-board/",
+      "sourceTitle": "Paul Christiano joins OpenAI Foundation Board",
+      "publication": "OpenAI",
+      "read": "Christiano trades a purely external advisory role for a seat inside OpenAI's own safety governance, letting the lab most associated with race dynamics answer its loudest alignment critic with a board chair instead of a rebuttal."
     }
   ]
 }
