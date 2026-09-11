@@ -93,6 +93,21 @@
       "sourceTitle": "Paul Christiano joins OpenAI Foundation Board",
       "publication": "OpenAI",
       "read": "Christiano trades a purely external advisory role for a seat inside OpenAI's own safety governance, letting the lab most associated with race dynamics answer its loudest alignment critic with a board chair instead of a rebuttal."
+    },
+    {
+      "person": "Fidji Simo",
+      "to": "Nscale",
+      "title": "Independent Director",
+      "from": "OpenAI",
+      "fromTitle": "CEO, AGI Deployment",
+      "date": "2026-09-11",
+      "type": "board",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://www.prnewswire.com/news-releases/fidji-simo-joins-nscale-board-of-directors-302876371.html",
+      "sourceTitle": "Fidji Simo Joins Nscale Board of Directors",
+      "publication": "PR Newswire",
+      "read": "Simo carries OpenAI product credibility onto Nscale's board as the infrastructure firm heads toward a US IPO, pairing raw compute ambition with a deployment leader fluent in shipping consumer-facing AI."
     }
   ]
 }
