@@ -2,7 +2,7 @@
   "week": "2026-W37",
   "range": { "start": "2026-09-07", "end": "2026-09-13" },
   "headline": "Christiano Lands Two Board Seats As OpenAI Courts Its Critics",
-  "read": "Paul Christiano spends the week collecting oversight roles rather than picking one lab to trust. On September 8 he joins the Mathematical AI Safety Institute's advisory panel, lending Alignment Research Center rigor to Jacob Tsimerman's proof-based institute. A day later OpenAI seats him on its Foundation board's Safety and Security Committee, placing an outside alignment critic inside the lab most often named in warnings about reckless AI development. The two appointments read as one bet: influence compounds faster through multiple seats than one. Andrew Critch runs MAISI as Executive Director, pairing years of writing about catastrophic AI scenarios with an institute built to formalize them, while Geoffrey Irving brings DeepMind, OpenAI, and UK AI Security Institute experience to the same panel. Jacob Coxon's exit from Anthropic pulls the opposite lever, trading three years of pretraining work for a public warning that both frontier labs race toward self-improving superintelligence at reckless speed. Together the three stories describe a field splitting its safety bets: quit and warn, build a new institute, or climb inside the boardroom. Model releases dominated the early week — GPT-6 Astra, Gemini 3.8 Flash, Claude Fable 5.1, and Muse Spark 1.3 — crowding out personnel news until Coxon and Christiano pulled safety back to center stage. Watch whether Christiano's OpenAI seat shapes deployment decisions or serves mainly as reputational cover, and whether MAISI's cohort draws mathematicians away from frontier labs.",
+  "read": "Paul Christiano spends the week collecting oversight roles rather than picking one lab to trust. On September 8 he joins the Mathematical AI Safety Institute's advisory panel, lending Alignment Research Center rigor to Jacob Tsimerman's proof-based institute. A day later OpenAI seats him on its Foundation board's Safety and Security Committee, placing an outside alignment critic inside the lab most named in warnings about reckless AI development. The two appointments read as one bet on compounding influence across many seats. Andrew Critch runs MAISI as Executive Director, pairing years of writing about catastrophic AI scenarios with an institute built to formalize them, while Geoffrey Irving brings DeepMind, OpenAI, and UK AI Security Institute experience to the same panel. Jacob Coxon's exit from Anthropic pulls the opposite lever, trading three years of pretraining work for a public warning that both frontier labs race toward self-improving superintelligence at reckless speed. Together the three stories describe a field splitting safety bets: quit and warn, build an institute, or climb inside the boardroom. Hardware tells a parallel story: Alan Duong leaves twelve years at Meta to run data center delivery for Crux AI, the Google-Blackstone neocloud betting TPUs can out-scale Nvidia clouds. Model releases crowded early-week news — GPT-6 Astra, Gemini 3.8 Flash, Claude Fable 5.1, Muse Spark 1.3 — until Coxon and Christiano pulled safety back to center stage. Watch whether Christiano's OpenAI seat shapes deployment decisions or serves mainly as reputational cover, and whether MAISI's cohort draws mathematicians away from frontier labs.",
   "moves": [
     {
       "person": "Jacob Tsimerman",
@@ -108,6 +108,21 @@
       "sourceTitle": "Fidji Simo Joins Nscale Board of Directors",
       "publication": "PR Newswire",
       "read": "Simo carries OpenAI product credibility onto Nscale's board as the infrastructure firm heads toward a US IPO, pairing raw compute ambition with a deployment leader fluent in shipping consumer-facing AI."
+    },
+    {
+      "person": "Alan Duong",
+      "to": "Crux AI",
+      "title": "Chief Development Officer",
+      "from": "Meta",
+      "fromTitle": "Vice President, Head of Data Center Engineering and Construction",
+      "date": "2026-09-10",
+      "type": "hire",
+      "confidence": "confirmed",
+      "sector": "ai",
+      "sourceUrl": "https://www.datacenterdynamics.com/en/news/google-blackstones-tpu-neocloud-named-crux-ai-hires-metas-data-center-engineering-head-alan-duong/",
+      "sourceTitle": "Google-Blackstone's TPU neocloud named Crux AI, hires Meta's data center engineering head Alan Duong",
+      "publication": "Data Center Dynamics",
+      "read": "Duong carries twelve years of Meta's AI data center buildout playbook into Crux AI's freshly launched, Google-and-Blackstone-backed bid to sell TPU capacity at the scale GPU neoclouds already command."
     }
   ]
 }
