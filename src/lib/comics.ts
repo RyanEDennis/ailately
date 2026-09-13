@@ -12,6 +12,15 @@ export type Comic = {
 
 export const COMICS: Comic[] = [
   {
+    date: "2026-09-13",
+    slug: "lost-in-translation",
+    title: "Lost in Translation",
+    image: "/comics/2026-09-13.webp",
+    alt:
+      "Four-panel comic. A boy returns from two months in France and tells his robot he took in everything — the sights, the culture, the food. He proudly says 'Bonjour,' and the robot cheers that his French must be excellent now. Puzzled, the boy asks what 'bon jore' means, since he used AI to translate everything.",
+    caption: "Two months in France, every word run through AI, and the language stayed a stranger.",
+  },
+  {
     date: "2026-09-06",
     slug: "weekly-token-limit",
     title: "Weekly Token Limit",

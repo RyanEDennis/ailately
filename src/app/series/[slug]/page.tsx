@@ -18,10 +18,12 @@ async function seriesFor(slug: string) {
   const articles = await getArticles();
   const name = articles.map((a) => a.series).find((s) => s && slugify(s) === slug);
   if (!name) return null;
-  // Chronological: the year's stories in the order they broke, oldest first.
-  const pieces = articles
+  // Chronological order, oldest first, with the capstone held last as the finale.
+  const sorted = articles
     .filter((a) => a.series === name)
     .sort((a, b) => (a.date ?? "").localeCompare(b.date ?? "") || a.order - b.order);
+  const capstone = sorted.find((p) => p.slug === CAPSTONE_SLUG);
+  const pieces = capstone ? [...sorted.filter((p) => p.slug !== capstone.slug), capstone] : sorted;
   return { name, pieces };
 }
 

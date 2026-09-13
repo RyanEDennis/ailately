@@ -38,6 +38,7 @@ export const CATEGORY_IMAGES: Record<string, PieceImage> = {
 // Bespoke art for specific pieces, chosen to fit the story. Overrides the
 // category image above.
 export const SLUG_IMAGES: Record<string, PieceImage> = {
+  "the-babel-bargain": img(13820897, "Close-up of an open English–Spanish dictionary"),
   "ai-in-software-testing": img(16592498, "Program source code on a monitor in blue light"),
   "inference-is-the-new-oil": img(17489163, "A server unit glowing in blue light"),
   "linkedins-last-year": img(6814523, "Two people shaking hands across an office desk"),
