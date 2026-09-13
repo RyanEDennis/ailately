@@ -74,9 +74,9 @@ export default async function AnalysisPage() {
       )}
 
       <ol className="reveal list-none p-0 m-0">
-        {rest.map((p, i) => (
-          <li key={p.slug} className="row grid gap-x-5 gap-y-2 rule py-6 md:grid-cols-[3.2rem_1fr_11rem]" data-row data-selected="false">
-            <span className="num mono hidden text-[0.85rem] pt-1 md:block" aria-hidden="true">{String(i + 1).padStart(2, "0")}</span>
+        {rest.map((p) => (
+          <li key={p.slug} className="row grid gap-x-5 gap-y-2 rule py-6 md:grid-cols-[4.5rem_1fr_11rem]" data-row data-selected="false">
+            <span className="mono hidden text-[0.78rem] text-gray tnum pt-1.5 md:block">{p.date ? formatDate(p.date, { month: "short", day: "numeric", year: "numeric" }) : ""}</span>
             <div>
               <p className="kicker kicker--mocha">{p.categoryLabel}</p>
               <h2 className="mt-1.5 text-[1.6rem] leading-[1.15] font-medium tracking-[-0.008em]" style={{ fontVariationSettings: '"opsz" 40' }}>
