@@ -3,7 +3,7 @@ import Link from "next/link";
 import { getPosts } from "@/lib/content";
 import { formatDate } from "@/lib/slug";
 import { pieceImage } from "@/lib/images";
-import { SITE } from "@/lib/site";
+import { SITE, FLAGSHIP_POST } from "@/lib/site";
 import { authorForName } from "@/lib/authors";
 
 function Byline({ name }: { name: string }) {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
 export default async function AnalysisPage() {
   const posts = await getPosts();
-  const featured = posts.find((p) => p.featured);
+  const featured = posts.find((p) => p.slug === FLAGSHIP_POST && p.featured) ?? posts.find((p) => p.featured);
   const rest = posts.filter((p) => !featured || p.slug !== featured.slug);
 
   return (

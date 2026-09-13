@@ -1,6 +1,6 @@
 ---
 title: "About AI Lately"
-description: "AI Lately reads artificial intelligence through the people who build it. Masthead, method, and the two sections."
+description: "AI Lately reads artificial intelligence through the people who build it."
 ---
 
 AI Lately covers artificial intelligence through the people who build it. Every hire, departure, promotion, paper, and filing carries a strategic message, and this publication exists to read it. The standing thesis sits in the name: AI is about people, and about what they have been up to lately.

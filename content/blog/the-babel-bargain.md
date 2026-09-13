@@ -10,7 +10,7 @@ companies: ["Google", "DeepL", "Microsoft", "Duolingo", "SIL Global", "Biblica"]
 author: Ryan Elliott Dennis
 byline: "Ryan Elliott Dennis"
 role: "Founder and Editor, AI Lately"
-featured: false
+featured: true
 image: ""
 seo:
   title: "The Babel Bargain: AI Translation's Hidden Cost"

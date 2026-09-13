@@ -33,6 +33,9 @@ export const CATEGORIES: Record<string, { label: string; blurb: string }> = {
   geopolitics: { label: "Geopolitics", blurb: "Export controls and sovereign compute." },
 };
 
+// The current flagship essay: leads the homepage and the Analysis section.
+export const FLAGSHIP_POST = "the-babel-bargain";
+
 export const KINDS: Record<string, string> = {
   news: "News",
   analysis: "Analysis",

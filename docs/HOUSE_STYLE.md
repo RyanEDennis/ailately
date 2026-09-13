@@ -10,6 +10,8 @@ Assume a reader with extensive prior knowledge: a research scientist, a VC platf
 
 Academic register, analytical tone, PhD-level precision. Strong nouns and verbs carry the meaning; adjectives and adverbs earn their place or leave. Clarity and consistency govern every paragraph.
 
+Write for the reader's job to be done: understanding the move, the data, and the stakes. Skip meta copy — sentences that explain the site to itself, narrate how a page is built, or describe what a section is for. Prose that reads like software talking to itself gets cut. Every line earns its place by informing the reader.
+
 Two measurable qualities matter: perplexity and burstiness. Vary sentence length aggressively. A four-word sentence can follow a forty-word one that folds two subordinate clauses around a statistic. Vary vocabulary; reach for the exact term. Uniform rhythm reads as machine output and gets rejected.
 
 ## The two absolute prohibitions (triple-check before delivery)

@@ -2,8 +2,8 @@ import { getArticles, getPosts, getWeeks } from "@/lib/content";
 import type { Piece } from "@/lib/content";
 import HomeFeed, { type Panel } from "@/components/HomeFeed";
 import { formatRange, formatDate } from "@/lib/slug";
-import { latestComic } from "@/lib/comics";
-import { SITE } from "@/lib/site";
+import { getComics, type Comic } from "@/lib/comics";
+import { SITE, FLAGSHIP_POST } from "@/lib/site";
 
 const ACCENT: Record<string, string> = {
   hiring: "#88B04B",
@@ -57,41 +57,44 @@ function storyPanel(p: Piece, opts: { lead?: boolean; epigraph?: boolean } = {})
   };
 }
 
+function comicPanel(c: Comic): Panel {
+  return {
+    type: "comic",
+    href: `/sunday-funnies/${c.slug}`,
+    title: c.title,
+    image: c.image,
+    alt: c.alt,
+    caption: c.caption,
+    dateLabel: formatDate(c.date, { month: "short", day: "numeric", year: "numeric" }),
+  };
+}
+
 export default async function Home() {
   const articles = await getArticles();
   const posts = await getPosts();
   const weeks = await getWeeks();
 
-  // A featured Analysis-section essay (e.g. Kelly Dennis's) leads the homepage
-  // when one exists; otherwise the lead falls back to the marquee article.
-  const leadPost = posts.find((p) => p.featured);
+  // The lineup that opens the homepage today: the flagship essay, this week's
+  // strip, the second featured essay, then the previous strip.
+  const featuredPosts = posts.filter((p) => p.featured);
   const lead =
-    leadPost ??
+    featuredPosts.find((p) => p.slug === FLAGSHIP_POST) ??
+    featuredPosts[0] ??
     articles.find((a) => a.slug === "biggest-ai-hires-of-2026-so-far") ??
     articles.find((a) => a.featured) ??
     articles[0];
-  const featured = articles.filter((a) => a.featured && a.slug !== lead.slug).slice(0, 2);
-  const shown = new Set<string>([lead.slug, ...featured.map((f) => f.slug)]);
+  const secondPost = featuredPosts.find((p) => p.slug !== lead.slug);
+  const comics = getComics(); // newest first
+  const featuredArticles = articles.filter((a) => a.featured && a.slug !== lead.slug).slice(0, 2);
+  const shown = new Set<string>([lead.slug, ...featuredArticles.map((f) => f.slug)]);
   const recent = articles.filter((a) => !shown.has(a.slug)).slice(0, 4);
   const week = weeks.find((w) => w.moves.length) ?? weeks[0];
 
   const panels: Panel[] = [];
   panels.push(storyPanel(lead, { lead: true, epigraph: true }));
-
-  // Sunday Funnies runs directly beneath the lead essay so it is the first
-  // thing readers meet after the day's headline piece.
-  const comic = latestComic();
-  if (comic) {
-    panels.push({
-      type: "comic",
-      href: `/sunday-funnies/${comic.slug}`,
-      title: comic.title,
-      image: comic.image,
-      alt: comic.alt,
-      caption: comic.caption,
-      dateLabel: formatDate(comic.date, { month: "short", day: "numeric", year: "numeric" }),
-    });
-  }
+  if (comics[0]) panels.push(comicPanel(comics[0]));
+  if (secondPost) panels.push(storyPanel(secondPost, { epigraph: true }));
+  if (comics[1]) panels.push(comicPanel(comics[1]));
 
   if (week) {
     panels.push({
@@ -111,7 +114,7 @@ export default async function Home() {
       })),
     });
   }
-  for (const f of featured) panels.push(storyPanel(f, { epigraph: true }));
+  for (const f of featuredArticles) panels.push(storyPanel(f, { epigraph: true }));
   for (const r of recent) panels.push(storyPanel(r));
   panels.push({ type: "exit", articlesCount: articles.length, thesis: SITE.tagline });
 

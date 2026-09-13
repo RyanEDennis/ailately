@@ -96,7 +96,7 @@ function Story({ p }: { p: StoryPanel }) {
       </div>
       {p.lead && (
         <div className="scroll-cue" aria-hidden="true">
-          Swipe
+          Scroll
           <span />
         </div>
       )}

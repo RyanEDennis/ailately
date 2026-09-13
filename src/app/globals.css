@@ -117,6 +117,7 @@ a:focus-visible, button:focus-visible, [tabindex]:focus-visible {
   font-weight: 560;
   letter-spacing: -0.02em;
   font-optical-sizing: auto;
+  line-height: 1.1; /* room for descenders; the gradient clip cuts the "y" tail at line-height 1 */
 }
 
 /* Headlines speak in Fraunces; apparatus labels (.kicker) and prose subheads stay in their own voice. */
